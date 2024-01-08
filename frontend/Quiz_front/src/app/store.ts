@@ -4,7 +4,7 @@ import authUserRedux from "../redux/authUser.redux";
 
 export const store = configureStore({
     reducer: {
-        auth: authUserRedux
+        auth: authUserRedux,
     }
 })
 

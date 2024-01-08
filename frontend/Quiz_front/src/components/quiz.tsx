@@ -13,8 +13,8 @@ const Quiz = () => {
           <div
             key={quizItem.id}
             className="container mx-auto p-3 shadow-lg rounded-lg m-3"
-          >container mx-auto p-3 shadow-lg rounded-lg m-3
-            <h2 className="text-2xl">{quizItem.name}</h2>
+          >
+            <h2 className="text-2xl">{quizItem.title}</h2>
           </div>
         ))
       ) : (

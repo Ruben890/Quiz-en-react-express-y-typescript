@@ -1,7 +1,7 @@
 import { Response, Request } from "express";
 import { Quiz } from "@prisma/client";
 import CrudService from "../utils/crudServices";
-import { QuizData } from "../interfaces/QuizData";
+
 
 
 // Create an instance of the service to manage quizzes

@@ -2,10 +2,10 @@ import useFetchQuiz from "../hooks/useFetchQuiz";
 import { useAppSelector } from "../app/hooks";
 
 const MyQuiz = () => {
-    const userID = useAppSelector((state) => state.auth.myUser.id);
+    const userID = useAppSelector((state) => state.auth.myUser);
     const { quiz } = useFetchQuiz();
 
-    const userHasQuiz = quiz.some((quizItem) => quizItem.userId === userID);
+    const userHasQuiz = quiz.some((quizItem) => quizItem.userId === userID.id);
 
     return (
         <div className="container mx-auto">

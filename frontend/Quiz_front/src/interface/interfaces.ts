@@ -51,7 +51,8 @@ export interface QuestionCorrectOption {
 // quiz.ts
 export interface Quiz {
     id?: number
-    name: string;
+    title: string;
     userId: number;
+    description: string;
     Question?: Question[];
 }
