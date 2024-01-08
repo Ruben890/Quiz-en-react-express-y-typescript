@@ -1,6 +1,7 @@
 import useFetchMyUser from "../hooks/useFetchMyUser";
 import { useAppSelector } from "../app/hooks";
 import Cookies from "js-cookie";
+
 export const Header = () => {
   const myUser = useAppSelector((state) => state.auth.myUser);
   useFetchMyUser();
@@ -20,7 +21,7 @@ export const Header = () => {
               <li className="me-10 text-xl">Home</li>
               <li className="me-10 text-xl">Question</li>
               {myUser && (
-                <li>
+                <li className="me-10 text-xl">
                   <a href="/dashboard">Dashboard</a>
                 </li>
               )}

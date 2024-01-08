@@ -1,8 +1,7 @@
-import { QuizData } from "../interface/QuizData";
 import { createQuiz } from "../api/quiz";
-
+import { Quiz } from "../interface/interfaces";
 const useFetchCreateQuiz = () => {
-  const fetchData = async (quizData: QuizData) => {
+  const fetchData = async (quizData: Quiz) => {
     try {
       await createQuiz(quizData);
     } catch (error) {
