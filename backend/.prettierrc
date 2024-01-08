@@ -1,0 +1,33 @@
+{
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 120,
+    "tabWidth": 2,
+    "overrides": [
+      {
+        "files": "*.ts",
+        "options": {
+          "parser": "typescript",
+          "semi": false,
+          "singleQuote": true,
+          "printWidth": 120,
+          "tabWidth": 2,
+          "overrides": [
+            {
+              "files": "*.ts", 
+              "options": {
+                "parserOptions": {
+                  "project": "./tsconfig.json",
+                  "createDefaultProgram": true
+                },
+                "rules": {
+                  "@typescript-eslint/no-explicit-any": "error"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+  
