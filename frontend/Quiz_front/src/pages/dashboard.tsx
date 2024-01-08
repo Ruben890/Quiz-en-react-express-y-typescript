@@ -1,9 +1,10 @@
-import Quiz from "../components/quiz";
+import { lazy, Suspense } from "react";
 import { Header } from "../components/header";
 import { motion } from "framer-motion";
 import { Modal } from "../components/modal";
-import { useState } from "react";
-
+import { useState } from "react"
+import { Loading } from "../components/loading";
+const Quiz = lazy(() => import("../components/quiz"))
 
 const Dashboard = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -34,12 +35,14 @@ const Dashboard = () => {
             </nav>
           </div>
           <div className="conatiner mx-auto m-3">
-            <Quiz />
+            <Suspense fallback={<Loading />}>
+              <Quiz />
+            </Suspense>
           </div>
         </div>
 
         <div className="lg:hidden md:block sm:block">
-          
+
         </div>
         <Modal
           width="80%"
