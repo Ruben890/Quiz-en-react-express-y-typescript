@@ -14,7 +14,7 @@ const MyQuiz = () => {
                     .filter((quizItem) => quizItem.userId === userID)
                     .map((filteredQuizItem) => (
                         <div key={filteredQuizItem.id} className="container mx-auto p-3 shadow-lg rounded-lg m-3">
-                            {/* Render your quiz item here */}
+                            <p>{filteredQuizItem.title}</p>
                         </div>
                     ))
             ) : (

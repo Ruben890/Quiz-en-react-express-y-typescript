@@ -8,22 +8,22 @@ datasource db {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   username String
   name     String
   lastname String
-  email    String    @unique
+  email    String  @unique
   password String
-  level    Int       @default(1)
+  level    Int     @default(1)
   Points   Point[]
   Quizzes  Quiz[]
 }
 
 model Option {
-  id            Int      @id @default(autoincrement())
+  id            Int             @id @default(autoincrement())
   content       String
   questionId    Int?
-  Question      Question?               @relation(fields: [questionId], references: [id])
+  Question      Question?       @relation(fields: [questionId], references: [id])
   CorrectOption CorrectOption[]
 }
 
@@ -35,12 +35,12 @@ model Point {
 }
 
 model Question {
-  id            Int              @id @default(autoincrement())
+  id            Int             @id @default(autoincrement())
   text          String
   points        Int
   quizId        Int
   options       Option[]
-  Quiz          Quiz             @relation(fields: [quizId], references: [id])
+  Quiz          Quiz            @relation(fields: [quizId], references: [id])
   correctOption CorrectOption[]
 }
 
@@ -53,10 +53,10 @@ model CorrectOption {
 }
 
 model Quiz {
-  id     Int   @id @default(autoincrement())
-  title   String
-  description String
-  userId Int
-  User   User  @relation(fields: [userId], references: [id])
-  Questions Question[]
+  id          Int        @id @default(autoincrement())
+  title       String
+  description String     @db.VarChar(500)
+  userId      Int
+  User        User       @relation(fields: [userId], references: [id])
+  Questions   Question[]
 }

@@ -10,11 +10,14 @@ const Quiz = () => {
     <>
       {quiz.length ? (
         quiz.map((quizItem) => (
-          <div
-            key={quizItem.id}
-            className="container mx-auto p-3 shadow-lg rounded-lg m-3"
-          >
-            <h2 className="text-2xl">{quizItem.title}</h2>
+          <div className="card w-96 bg-base-100 shadow-xl" key={quizItem.id}>
+            <div className="card-body">
+              <h2 className="card-title">{quizItem.title}</h2>
+              <p>{quizItem.description}</p>
+              <div className="card-actions justify-end">
+                <button className="btn btn-primary">Start</button>
+              </div>
+            </div>
           </div>
         ))
       ) : (
