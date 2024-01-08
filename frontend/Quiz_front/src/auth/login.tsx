@@ -36,7 +36,7 @@ const Login = () => {
                 <img src="" alt="logo" />
               </div>
               <h1 className="text-center m-5 text-3xl">Login</h1>
-              <hr  className="mb-5"/>
+              <hr className="mb-5" />
               <div className="container mx-auto">
                 <label htmlFor="email">Email</label>
                 <input

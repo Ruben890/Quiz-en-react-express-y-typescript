@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { Modal } from "../components/modal";
 import { useState } from "react"
 import { Loading } from "../components/loading";
-const Quiz = lazy(() => import("../components/quiz"))
+
+const Quiz = lazy(() => import("../components/myQuiz"))
 
 const Dashboard = () => {
   const [isModalOpen, setModalOpen] = useState(false);
