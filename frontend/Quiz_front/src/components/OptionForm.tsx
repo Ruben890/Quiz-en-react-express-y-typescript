@@ -22,15 +22,13 @@ export const OptionForm: React.FC<QuestionIndex> = ({ questionIndex }) => {
     };
 
     const handleAddOption = () => {
-        // Validar que la opción no esté vacía antes de agregarla
         if (option.trim() === "") {
             return;
         }
 
-        // Aquí deberías llamar a tu acción de Redux para agregar la opción al estado global
+
         dispatch(addOption({ questionIndex, option: { option: options.option, isCorrect: options.isCorrect } }));
 
-        // Luego puedes reiniciar los estados
         setOptions({
             option: '',
             isCorrect: false

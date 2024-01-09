@@ -18,14 +18,14 @@ export const QuizForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validaciones adicionales pueden ir aquí
+
 
     if (!quizData.title || !quizData.description) {
       setMessage("Por favor, complete todos los campos.");
       return;
     }
 
-    // Actualizar el estado global con la información del nuevo quiz
+    
     dispatch(setQuiz(quizData));
     setMessage("");
   };

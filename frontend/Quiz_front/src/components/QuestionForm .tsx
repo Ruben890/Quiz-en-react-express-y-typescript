@@ -25,10 +25,8 @@ export const FormQuestions = () => {
             return;
         }
 
-        // Despachar la acción para agregar la pregunta con los datos actuales
         dispatch(addQuestion({ question, points, options: [] }));
 
-        // Limpiar los campos después de agregar la pregunta
         setQuestion('');
         setPoints(0);
     };
