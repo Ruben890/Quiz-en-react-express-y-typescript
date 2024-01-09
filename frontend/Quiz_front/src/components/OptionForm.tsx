@@ -41,7 +41,7 @@ export const OptionForm: React.FC<QuestionIndex> = ({ questionIndex }) => {
             <p className="p-3 font-bold">- Agregar opciones:</p>
 
             <div className="divider">
-                <div className={`p-1 rounded-lg text-white ${isCorrect ? 'bg-green-600 ' : 'bg-red-600'}`}>
+                <div className={`p-1 rounded-lg  ${isCorrect ? 'bg-green-600 ' : 'bg-red-600'}`}>
                     <input
                         type="text"
                         name="option"

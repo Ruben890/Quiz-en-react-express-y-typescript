@@ -30,25 +30,25 @@ export const QuestionItem = () => {
                         <div>
                             {questionItem.options.map((optionItem, optionIndex) => (
                                 <div key={optionIndex} >
-                                    <div className={`flex justify-between rounded-lg  m-2 ${optionItem.isCorrect ? 'bg-green-600 text-white' : 'bg-red-600 '}`}>
+                                    <div className={`flex justify-between rounded-lg text-white  m-2 ${optionItem.isCorrect ? 'bg-green-600 ' : 'bg-red-600 '}`}>
                                         <p className="p-2">{optionItem.option}</p>
 
                                         <button
                                             type="button"
                                             className={`text-white  text-lg h-full   p-2 hover:bg-white  duration-300 transition-all rounded-r-lg ${optionItem.isCorrect ? 'hover:text-green-600' : 'hover:text-red-600'}`}>
-                                        <i className="fa-solid fa-trash"></i>
-                                    </button>
-                                </div>
+                                            <i className="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             ))}
-                    </div>
-                    <div className="bg-slate-50 rounded-lg">
-                        <OptionForm questionIndex={questionIndex} />
+                        </div>
+                        <div className="bg-slate-50 rounded-lg">
+                            <OptionForm questionIndex={questionIndex} />
+                        </div>
                     </div>
                 </div>
-                </div>
-    ))
-}
+            ))
+            }
         </div >
     );
 };
