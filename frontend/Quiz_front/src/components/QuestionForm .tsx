@@ -19,7 +19,8 @@ export const FormQuestions = () => {
         }
     };
 
-    const handleAddQuestion = () => {
+    const handleAddQuestion = (e: React.FormEvent) => {
+        e.preventDefault();
         if (question.trim() === "" || points === 0) {
             setMessage('los capos putons y pregunta estan vacios ')
             return;

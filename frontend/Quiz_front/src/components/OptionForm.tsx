@@ -21,7 +21,8 @@ export const OptionForm: React.FC<QuestionIndex> = ({ questionIndex }) => {
         }));
     };
 
-    const handleAddOption = () => {
+    const handleAddOption = (e: React.FormEvent) => {
+        e.preventDefault();
         if (option.trim() === "") {
             return;
         }
@@ -46,6 +47,7 @@ export const OptionForm: React.FC<QuestionIndex> = ({ questionIndex }) => {
                         type="text"
                         name="option"
                         value={option}
+                        maxLength={65}
                         onChange={handleChange}
                         placeholder="Opción"
                         className="outline-none p-2"
