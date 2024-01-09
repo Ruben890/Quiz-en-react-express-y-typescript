@@ -32,7 +32,7 @@ export const QuizForm = () => {
 
   return (
     <>
-      <div className="container mx-auto p-3 border-r border-s relative bottom-6 h-full w-80 w-full">
+      <div className="container mx-auto p-3 border-r border-s relative bottom-6 h-full w-full">
         <form onSubmit={handleSubmit} className="">
           <div className="m-2">
             <label htmlFor="title">Title</label>

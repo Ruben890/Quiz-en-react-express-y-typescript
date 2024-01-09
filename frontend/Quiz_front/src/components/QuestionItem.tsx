@@ -8,12 +8,22 @@ export const QuestionItem = () => {
         <div >
             {questionItems?.map((questionItem, questionIndex) => (
                 <div key={questionIndex}>
-                    <div className="shadow-lg m-2 rounded-lg p-3 flex justify-between">
-                        <p>{questionItem.question}</p>
-                        <span className="flex">
-                            <p className="bg-green-400 rounded-lg p-1">{questionItem.points}</p>
-                            <i className="fa-solid fa-chevron-down relative top-2 ms-2"></i>
-                        </span>
+
+                    <div className="shadow-lg m-2 rounded-lg  flex justify-between text-center ">
+
+                        <p className="p-2">{questionItem.question}</p>
+
+                        <div className="max-h-screen flex ">
+                            <span className="flex p-2">
+                                <p className="bg-green-400 rounded-lg p-1">{questionItem.points}</p>
+                                <i className="fa-solid fa-chevron-down relative top-2 ms-2"></i>
+                            </span>
+                            <button
+                                type="button"
+                                className="text-red-600 text-lg h-full  hover:bg-red-500 hover:text-white p-2 duration-300 transition-all rounded-r-lg">
+                                <i className="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
 
                     <div className="m-5 p-3">

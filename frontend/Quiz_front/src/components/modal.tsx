@@ -73,7 +73,7 @@ export const Modal: React.FC<PropsModal> = ({
               <i className="fa-solid fa-x text-3xl"></i>
             </motion.button>
             <div className="w-full h-full">
-              <div className="container mx-auto m-3 flex h-full relative w-full justify-center ">
+              <div className="m-3 flex h-full  w-full justify-center ">
                 <div>
                   <QuizForm />
                 </div>
