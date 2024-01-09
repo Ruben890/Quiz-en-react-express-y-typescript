@@ -34,20 +34,25 @@ const quizSlice = createSlice({
                 state.quiz.Question.splice(indexToRemove, 1);
             }
         },
-        addOption: (state, action: PayloadAction<{ questionIndex: number; option: Option }>) => {
-            const { questionIndex, option } = action.payload;
-            if (state.quiz && state.quiz.Question && state.quiz.Question[questionIndex]) {
-                const question = state.quiz.Question[questionIndex];
+        // Corrige el tipo de la propiedad 'option' en el PayloadAction
+addOption: (
+  state,
+  action: PayloadAction<{ questionIndex: number; option: Option }>
+) => {
+  const { questionIndex, option } = action.payload;
+  if (state.quiz && state.quiz.Question && state.quiz.Question[questionIndex]) {
+    const question = state.quiz.Question[questionIndex];
 
-                // Ensure that 'options' is initialized as an array
-                question.options = question.options || [];
+    // Asegúrate de que 'options' esté inicializado como un array
+    question.options = question.options || [];
 
-                // Limit the number of options per question
-                if (question.options.length < MAX_OPTIONS_PER_QUESTION) {
-                    question.options.push(option);
-                }
-            }
-        },
+    // Limita el número de opciones por pregunta
+    if (question.options.length < MAX_OPTIONS_PER_QUESTION) {
+      question.options.push(option);
+    }
+  }
+},
+
         removeOption: (state, action: PayloadAction<{ questionIndex: number; optionIndex: number }>) => {
             const { questionIndex, optionIndex } = action.payload;
             if (state.quiz && state.quiz.Question && state.quiz.Question[questionIndex]) {

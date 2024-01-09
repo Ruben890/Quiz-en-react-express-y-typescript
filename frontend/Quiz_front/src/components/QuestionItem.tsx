@@ -29,21 +29,26 @@ export const QuestionItem = () => {
                     <div className="m-5 p-3">
                         <div>
                             {questionItem.options.map((optionItem, optionIndex) => (
-                                <div key={optionIndex}>
-                                    {optionItem.isCorrect ? (
-                                        <p className="border-green-600 rounded-lg p-2 shadow-lg">{optionItem.option}</p>
-                                    ) : (
-                                        <p className="border-red-600 rounded-lg p-2 shadow-lg">{optionItem.option}</p>
-                                    )}
+                                <div key={optionIndex} >
+                                    <div className={`flex justify-between rounded-lg  m-2 ${optionItem.isCorrect ? 'bg-green-600 text-white' : 'bg-red-600 '}`}>
+                                        <p className="p-2">{optionItem.option}</p>
+
+                                        <button
+                                            type="button"
+                                            className={`text-white  text-lg h-full   p-2 hover:bg-white  duration-300 transition-all rounded-r-lg ${optionItem.isCorrect ? 'hover:text-green-600' : 'hover:text-red-600'}`}>
+                                        <i className="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
                                 </div>
                             ))}
-                        </div>
-                        <div className="bg-slate-50 rounded-lg">
-                            <OptionForm questionIndex={questionIndex} />
-                        </div>
+                    </div>
+                    <div className="bg-slate-50 rounded-lg">
+                        <OptionForm questionIndex={questionIndex} />
                     </div>
                 </div>
-            ))}
-        </div>
+                </div>
+    ))
+}
+        </div >
     );
 };
