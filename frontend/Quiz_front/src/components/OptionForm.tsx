@@ -35,7 +35,7 @@ export const OptionForm: React.FC<QuestionIndex> = ({ questionIndex }) => {
         });
     };
 
-    console.log(isCorrect)
+
     return (
         <form className="p-3">
             <p className="p-3 font-bold">- Agregar opciones:</p>
