@@ -13,11 +13,11 @@ export interface User {
 
 // option.ts
 export interface Option {
-    id: number;
-    content: string;
+    id?: number;
+    option: string;
+    isCorrect: boolean
     questionId?: number;
     Question?: Question;
-    QuestionCorrectOption: QuestionCorrectOption[];
 }
 
 // points.ts
@@ -30,23 +30,15 @@ export interface Points {
 
 // question.ts
 export interface Question {
-    id: number;
-    text: string;
+    id?: number;
+    question: string;
     points: number;
-    quizId: number;
-    Option: Option[];
-    Quiz: Quiz;
-    QuestionCorrectOption: QuestionCorrectOption[];
+    quizId?: number;
+    options: Option[];
+    Quiz?: Quiz;
+
 }
 
-// questionCorrectOption.ts
-export interface QuestionCorrectOption {
-    id: number;
-    questionId: number;
-    optionId: number;
-    Option: Option;
-    Question: Question;
-}
 
 // quiz.ts
 export interface Quiz {
@@ -54,5 +46,5 @@ export interface Quiz {
     title: string;
     userId: number;
     description: string;
-    Question?: Question[];
+    Question: Question[];
 }

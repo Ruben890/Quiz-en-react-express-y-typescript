@@ -20,11 +20,11 @@ model User {
 }
 
 model Option {
-  id            Int             @id @default(autoincrement())
-  content       String
-  questionId    Int?
-  Question      Question?       @relation(fields: [questionId], references: [id])
-  CorrectOption CorrectOption[]
+  id         Int       @id @default(autoincrement())
+  option    String
+  isCorrect  Boolean   @default(false)
+  questionId Int?
+  Question   Question? @relation(fields: [questionId], references: [id])
 }
 
 model Point {
@@ -35,21 +35,12 @@ model Point {
 }
 
 model Question {
-  id            Int             @id @default(autoincrement())
-  text          String
-  points        Int
-  quizId        Int
-  options       Option[]
-  Quiz          Quiz            @relation(fields: [quizId], references: [id])
-  correctOption CorrectOption[]
-}
-
-model CorrectOption {
-  id         Int      @id @default(autoincrement())
-  questionId Int
-  optionId   Int
-  Option     Option   @relation(fields: [optionId], references: [id])
-  Question   Question @relation(fields: [questionId], references: [id])
+  id       Int      @id @default(autoincrement())
+  question String
+  points   Int
+  quizId   Int
+  options  Option[]
+  Quiz     Quiz     @relation(fields: [quizId], references: [id])
 }
 
 model Quiz {

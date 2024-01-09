@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authUserRedux from "../redux/authUser.redux";
-
+import quizRedux from "../redux/quiz.redux";
 
 export const store = configureStore({
     reducer: {
         auth: authUserRedux,
+        quiz: quizRedux
     }
 })
 

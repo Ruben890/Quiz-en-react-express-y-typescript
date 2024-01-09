@@ -1,0 +1,8 @@
+.containerQuetions::-webkit-scrollbar {
+  width: 7px;
+}
+
+.containerQuetions::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color:  #2ECC71;
+}

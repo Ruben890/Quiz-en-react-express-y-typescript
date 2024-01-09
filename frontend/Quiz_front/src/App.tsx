@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className="container mx-auto">
+      <main className="container mx-auto mt-20">
         <Quiz/>
       </main>
     </>

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { QuizForm } from "./CreateQuiz";
+import { QuizForm } from "./QuizForm";
+import { FormQuestions } from "./QuestionForm ";
 interface PropsModal {
   width: string;
   height: string;
@@ -72,8 +73,18 @@ export const Modal: React.FC<PropsModal> = ({
               <i className="fa-solid fa-x text-3xl"></i>
             </motion.button>
             <div className="w-full h-full">
-              <div className="container mx-auto m-3 flex h-full relative">
-                <QuizForm />
+              <div className="container mx-auto m-3 flex h-full relative w-full justify-center ">
+                <div>
+                  <QuizForm />
+                </div>
+
+                <div>
+                  <FormQuestions />
+                </div>
+              </div>
+
+              <div className=" w-full flex justify-end relative  text-white " style={{ bottom: "3rem" }}>
+                <button className=" rounded-lg bg-green-400 p-3 w-80 hover:bg-green-700 duration-300 transition-all">Crear prueba</button>
               </div>
             </div>
           </motion.div>
