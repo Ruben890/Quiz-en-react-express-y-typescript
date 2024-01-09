@@ -1,7 +1,10 @@
 import { useAppSelector } from "../app/hooks";
 import { OptionForm } from "./OptionForm";
+import { useDispatch } from "react-redux";
+import { removeOption, removeQuestion } from "../redux/quiz.redux";
 
 export const QuestionItem = () => {
+    const dispath = useDispatch()
     const questionItems = useAppSelector((state) => state.quiz.quiz?.Question);
 
     return (
@@ -19,6 +22,7 @@ export const QuestionItem = () => {
                                 <i className="fa-solid fa-chevron-down relative top-2 ms-2"></i>
                             </span>
                             <button
+                                onClick={() => dispath(removeQuestion(questionIndex))}
                                 type="button"
                                 className="text-red-600 text-lg h-full  hover:bg-red-500 hover:text-white p-2 duration-300 transition-all rounded-r-lg">
                                 <i className="fa-solid fa-trash"></i>
@@ -34,6 +38,7 @@ export const QuestionItem = () => {
                                         <p className="p-2">{optionItem.option}</p>
 
                                         <button
+                                            onClick={() => dispath(removeOption({ questionIndex, optionIndex }))}
                                             type="button"
                                             className={`text-white  text-lg h-full   p-2 hover:bg-white  duration-300 transition-all rounded-r-lg ${optionItem.isCorrect ? 'hover:text-green-600' : 'hover:text-red-600'}`}>
                                             <i className="fa-solid fa-trash"></i>

@@ -58,7 +58,7 @@ export const FormQuestions = () => {
                                 className="block w-full p-2 m-2"
                                 value={points}
                                 onChange={handleChange}
-                                min={0}
+                                min={1}
                                 max={100}
                             />
                         </div>
