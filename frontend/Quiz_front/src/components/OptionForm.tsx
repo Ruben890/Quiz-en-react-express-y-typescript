@@ -58,7 +58,7 @@ export const OptionForm: React.FC<QuestionIndex> = ({ questionIndex }) => {
                             onChange={handleChange}
                             className="ms-2 me-1 border-none"
                         />
-                        <i className={` ms-2 me-2 ${isCorrect ? 'fa-solid fa-check' : 'fa-solid fa-xmark'}`}></i>
+                        <i className={` ms-2 me-2 text-white ${isCorrect ? 'fa-solid fa-check' : 'fa-solid fa-xmark'}`}></i>
                     </label>
                 </div>
             </div>
