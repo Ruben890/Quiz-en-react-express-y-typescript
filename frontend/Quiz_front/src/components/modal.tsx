@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { QuizForm } from "./QuizForm";
 import { FormQuestions } from "./QuestionForm ";
+import useFetchCreateQuiz from "../hooks/useFetchcreateQuiz";
+import { useAppSelector } from "../app/hooks";
 interface PropsModal {
   width: string;
   height: string;
@@ -15,6 +17,18 @@ export const Modal: React.FC<PropsModal> = ({
   isOpen,
   onClose,
 }) => {
+
+  const quizData = useAppSelector((state) => state.quiz.quiz)
+  const { fetchData } = useFetchCreateQuiz()
+  const CreateQuiz = async () => {
+    try {
+      await fetchData(quizData);
+      window.location.reload();  
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const overlayVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -83,7 +97,7 @@ export const Modal: React.FC<PropsModal> = ({
                 </div>
               </div>
 
-              <div className=" w-full flex justify-end relative  text-white " style={{ bottom: "3rem" }}>
+              <div className=" w-full flex justify-end relative  text-white " style={{ bottom: "3rem" }} onClick={CreateQuiz}>
                 <button className=" rounded-lg bg-green-400 p-3 w-80 hover:bg-green-700 duration-300 transition-all">Crear prueba</button>
               </div>
             </div>
