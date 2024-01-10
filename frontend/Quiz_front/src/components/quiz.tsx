@@ -1,9 +1,11 @@
 import useFetchQuiz from "../hooks/useFetchQuiz";
 import { Link } from "react-router-dom";
 const Quiz = () => {
-  const { quiz } = useFetchQuiz();
+  const { quiz, isloading } = useFetchQuiz();
 
-
+  if (isloading) {
+    return
+  }
 
   return (
     <>

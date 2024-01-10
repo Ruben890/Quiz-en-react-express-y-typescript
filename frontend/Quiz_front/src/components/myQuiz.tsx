@@ -3,8 +3,13 @@ import { useAppSelector } from "../app/hooks";
 
 const MyQuiz = () => {
     const user = useAppSelector((state) => state.auth.myUser);
-    const { quiz } = useFetchQuiz();
+    const { quiz, isloading } = useFetchQuiz();
     const userHasQuiz = quiz.some((quizItem) => quizItem.userId === user.id);
+
+    if (isloading) {
+        return
+    }
+
 
     return (
         <div className="container mx-auto  border lg:h-full p-5 rounded-lg">

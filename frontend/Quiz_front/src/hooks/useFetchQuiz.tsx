@@ -3,7 +3,7 @@ import { getAllQuiz } from "../api/quiz"; // Asegúrate de importar la función 
 import {Quiz as QuizType} from "../interface/interfaces";
 const useFetchQuiz = () => {
   const [quiz, setQuiz] = useState<QuizType[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [isloading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const useFetchQuiz = () => {
     fetchData();
   }, []);
 
-  return { quiz, loading, error };
+  return { quiz, isloading, error };
 };
 
 export default useFetchQuiz;
