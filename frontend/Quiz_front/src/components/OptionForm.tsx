@@ -68,7 +68,7 @@ export const OptionForm: React.FC<QuestionIndex> = ({ questionIndex }) => {
                 <button
                     type="button"
                     onClick={handleAddOption}
-                    className="p-2 rounded-xl bg-white hover:bg-gray-200 duration-300 transition-all"
+                    className="p-2 rounded-xl bg-slate-50 hover:bg-gray-200 duration-300 transition-all"
                 >
                     Agregar Opción
                 </button>
