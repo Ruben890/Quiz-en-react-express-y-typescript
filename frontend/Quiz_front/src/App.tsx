@@ -6,8 +6,10 @@ function App() {
   return (
     <>
       <Header />
-      <main className="container mx-auto mt-20">
-        <Quiz/>
+      <main className="container mx-auto mt-20 p-3">
+        <div className="flex flex-wrap">
+          <Quiz />
+        </div>
       </main>
     </>
   );
