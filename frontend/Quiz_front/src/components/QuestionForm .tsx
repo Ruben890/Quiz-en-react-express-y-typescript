@@ -3,13 +3,15 @@ import { QuestionItem } from "./QuestionItem";
 import { useDispatch } from "react-redux";
 import { addQuestion } from "../redux/quiz.redux";
 import { useAppSelector } from "../app/hooks";
+import useFetchCreateQuiz from "../hooks/useFetchcreateQuiz";
 import './style/QuestionForm.css'
 export const FormQuestions = () => {
-    const quiz = useAppSelector((state) => state.quiz.quiz)
+    const quiz = useAppSelector((state) => state.createQuiz.quiz)
     const dispatch = useDispatch();
     const [question, setQuestion] = useState<string>('');
     const [points, setPoints] = useState<number>(0);
     const [message, setMessage] = useState<string>('')
+    const { fetchData } = useFetchCreateQuiz()
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         if (name === "question") {
@@ -32,6 +34,32 @@ export const FormQuestions = () => {
         setPoints(0);
     };
 
+
+    const handleAddQuiz = async () => {
+        try {
+            if (!quiz?.Questions.create || quiz.Questions.create.length === 0) {
+                setMessage('Error: No se ha creado al menos una pregunta.');
+                return;
+            }
+
+            const questionsWithoutOptions = quiz.Questions.create.filter(question => !question.options || question.options.create.length === 0);
+
+            if (questionsWithoutOptions.length > 0) {
+                setMessage('Error: Al menos una pregunta no tiene opciones agregadas.');
+                return;
+            }
+
+            setMessage('');
+
+            await fetchData(quiz);
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
+
     return (
         quiz && <>
 
@@ -51,6 +79,7 @@ export const FormQuestions = () => {
                                 className="block w-full p-2 m-2"
                                 value={question}
                                 onChange={handleChange}
+                                maxLength={80}
                             />
                             <label htmlFor="point">Puntos</label>
                             <input
@@ -71,16 +100,24 @@ export const FormQuestions = () => {
                             </button>
                         </div>
 
-                        <div className="mt-3 w-full flex justify-center ">
-                            <p className="text-red-600">{message}</p>
-                        </div>
+
                     </form>
 
                     <div className="overflow-auto containerQuetions " style={{ height: '50vh' }}>
                         <QuestionItem />
                     </div>
                 </div>
-
+                <div className="flex justify-center p-2">
+                    <div className="text-center">
+                        <p className="text-red-600 m-2">{message}</p>
+                        <button
+                            type="button"
+                            onClick={handleAddQuiz}
+                            className="bg-green-400 p-3 w-80 rounded-lg text-white text-xl hover:bg-green-700 duration-300 transition-all">
+                            create quiz
+                        </button>
+                    </div>
+                </div>
             </div>
         </>
     );

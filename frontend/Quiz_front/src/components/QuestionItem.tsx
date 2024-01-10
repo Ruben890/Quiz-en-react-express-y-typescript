@@ -5,7 +5,7 @@ import { removeOption, removeQuestion } from "../redux/quiz.redux";
 
 export const QuestionItem = () => {
   const dispatch = useDispatch();
-  const quiz = useAppSelector((state) => state.quiz.quiz);
+  const quiz = useAppSelector((state) => state.createQuiz.quiz);
 
   if (!quiz) {
     return null; // Manejar el caso cuando quiz es null

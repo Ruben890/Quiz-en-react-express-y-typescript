@@ -7,7 +7,7 @@ const MyQuiz = () => {
     const userHasQuiz = quiz.some((quizItem) => quizItem.userId === user.id);
 
     return (
-        <div className="container mx-auto  border h-full p-5 rounded-lg">
+        <div className="container mx-auto  border lg:h-full p-5 rounded-lg">
             {userHasQuiz ? (
                 quiz
                     .filter((quizItem) => quizItem.userId === user.id)

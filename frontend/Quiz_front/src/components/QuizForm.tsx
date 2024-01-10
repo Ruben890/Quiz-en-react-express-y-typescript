@@ -25,7 +25,7 @@ export const QuizForm = () => {
       return;
     }
 
-    
+
     dispatch(setQuiz(quizData));
     setMessage("");
   };
@@ -43,6 +43,7 @@ export const QuizForm = () => {
               value={quizData.title}
               onChange={handleChange}
               className="block w-full p-2 m-2"
+              maxLength={100}
             />
             <label htmlFor="description">Description</label>
             <textarea
@@ -53,6 +54,7 @@ export const QuizForm = () => {
               className="block resize-none w-full p-2 m-2"
               cols={23}
               rows={4}
+              maxLength={500}
             ></textarea>
           </div>
 
