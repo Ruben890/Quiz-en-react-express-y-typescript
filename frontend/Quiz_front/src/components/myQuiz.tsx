@@ -4,11 +4,10 @@ import { useAppSelector } from "../app/hooks";
 const MyQuiz = () => {
     const user = useAppSelector((state) => state.auth.myUser);
     const { quiz } = useFetchQuiz();
-
     const userHasQuiz = quiz.some((quizItem) => quizItem.userId === user.id);
 
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto  border h-full p-5 rounded-lg">
             {userHasQuiz ? (
                 quiz
                     .filter((quizItem) => quizItem.userId === user.id)

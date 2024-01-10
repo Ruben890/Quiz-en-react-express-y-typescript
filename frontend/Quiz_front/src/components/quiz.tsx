@@ -1,5 +1,4 @@
 import useFetchQuiz from "../hooks/useFetchQuiz";
-
 import { Link } from "react-router-dom";
 const Quiz = () => {
   const { quiz } = useFetchQuiz();

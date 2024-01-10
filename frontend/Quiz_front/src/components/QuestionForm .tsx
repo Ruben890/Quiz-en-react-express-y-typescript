@@ -34,11 +34,13 @@ export const FormQuestions = () => {
 
     return (
         quiz && <>
-            <div className="p-3 shadow-lg rounded-lg relative w-max-screen  bottom-10  font-bold text-xl text-center" >
-                <p> - {quiz?.title}</p>
-            </div>
-            <div className="border-s border-r relative bottom-6 h-full w-full">
-                <div className="flex">
+
+            <div className="border relative bottom-6 h-full w-full mt-10 rounded-lg">
+
+                <div className="p-3 rounded-t w-max-screen  border-b  font-bold text-xl text-center" >
+                    <p> - {quiz?.title}</p>
+                </div>
+                <div className="flex w-full justify-around p-3 mt-5">
                     <form className="p-2">
                         <div className="block w-80 m-2">
                             <label htmlFor="text">Pregunta</label>

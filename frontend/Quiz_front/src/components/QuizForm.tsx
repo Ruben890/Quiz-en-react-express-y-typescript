@@ -32,7 +32,7 @@ export const QuizForm = () => {
 
   return (
     <>
-      <div className="container mx-auto p-3 border-r border-s relative bottom-6 h-full w-full">
+      <div className="container mx-auto p-3 border relative bottom-6 h-full w-full rounded-lg">
         <form onSubmit={handleSubmit} className="">
           <div className="m-2">
             <label htmlFor="title">Title</label>
@@ -57,7 +57,7 @@ export const QuizForm = () => {
           </div>
 
           <div className="w-full flex justify-center  text-white  ">
-            <button type="submit" className="p-3 bg-green-400 rounded-lg w-20 hover:bg-green-700 duration-300 transition-all" ><i className="fa-solid fa-play text-2xl"></i> </button>
+            <button type="submit" className="p-3 bg-green-400 rounded-lg w-80 hover:bg-green-700 duration-300 transition-all" ><i className="fa-solid fa-play text-2xl"></i> </button>
           </div>
         </form>
         <div className="mt-3 w-full flex justify-center ">
