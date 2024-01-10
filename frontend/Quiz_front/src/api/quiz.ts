@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import Cookies from "js-cookie";
 import { Quiz } from "../interface/interfaces";
-import { QuizData } from "../interface/QuizData";
+
 
 const quizApi: AxiosInstance = axios.create({
     baseURL: "http://localhost:4000/quiz/",
@@ -23,7 +23,7 @@ export const getAllQuiz = async (): Promise<Quiz[]> => {
 
 
 
-export const createQuiz = async (data: QuizData) => {
+export const createQuiz = async (data: Quiz | null) => {
     try {
         const response = await quizApi.post('/createQuiz', data)
         return response.data
