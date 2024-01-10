@@ -1,28 +1,34 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import RouteWithNotFound from "./utils/routes-whith-not-fount";
 import ProtectedRoute from "./utils/routes-protect";
 import AuthProtectRoute from "./utils/auth-protect-rutes";
-import App from "./App";
+import { Loading } from "./components/loading";
 import Login from "./auth/login";
 import Register from "./auth/register";
-import Dashboard from "./pages/dashboard";
+
+
+const App = lazy(() => import('./App'));
+const Dashboard = lazy(() => import("./pages/dashboard"));
 
 const Routes = () => {
   return (
-    <BrowserRouter>
-      <RouteWithNotFound>
-        <Route path="/" element={<App />} />
+    <Suspense fallback={<Loading />}>
+      <BrowserRouter>
+        <RouteWithNotFound>
+          <Route path="/" element={<App />} />
 
-        <Route element={<AuthProtectRoute redirectTo="/" />}>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Route>
+          <Route element={<AuthProtectRoute redirectTo="/" />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
 
-        <Route element={<ProtectedRoute redirectTo="/login" />}>
-          <Route element={<Dashboard />} path="/dashboard" />
-        </Route>
-      </RouteWithNotFound>
-    </BrowserRouter>
+          <Route element={<ProtectedRoute redirectTo="/login" />}>
+            <Route element={<Dashboard />} path="/dashboard" />
+          </Route>
+        </RouteWithNotFound>
+      </BrowserRouter>
+    </Suspense>
   );
 };
 

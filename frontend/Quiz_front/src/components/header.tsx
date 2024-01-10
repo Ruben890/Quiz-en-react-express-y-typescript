@@ -18,7 +18,9 @@ export const Header = () => {
 
           <div className="nv_options mt-3">
             <ul className="flex">
-              <li className="me-10 text-xl cursor-pointer hover:text-black duration-300 transition-all">Home</li>
+              <li className="me-10 text-xl cursor-pointer hover:text-black duration-300 transition-all">
+                <a href="/">Home</a>
+              </li>
               <li className="me-10 text-xl cursor-pointer hover:text-black duration-300 transition-all">Question</li>
               {myUser && (
                 <li className="me-10 text-xl cursor-pointer hover:text-black duration-300 transition-all">
