@@ -53,24 +53,26 @@ export const QuestionItem = () => {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div>
-              {questionItem.options?.create.map((optionItem, optionIndex) => (
-                <div key={optionIndex}>
-                  <div className={`flex justify-between rounded-lg text-white m-2 ${optionItem.isCorrect ? 'bg-green-600 ' : 'bg-red-600 '}`}>
-                    <p className="p-2">{optionItem.option}</p>
-                    <button
-                      onClick={() => dispatch(removeOption({ questionIndex, optionIndex }))}
-                      type="button"
-                      className={`text-white text-lg h-full p-2 hover:bg-white duration-300 transition-all rounded-r-lg ${optionItem.isCorrect ? 'hover:text-green-600' : 'hover:text-red-600'}`}
-                    >
-                      <i className="fa-solid fa-trash"></i>
-                    </button>
+            <div className='shadow-lg p-2 m-3 rounded-lg'>
+              <div>
+                {questionItem.options?.create.map((optionItem, optionIndex) => (
+                  <div key={optionIndex}>
+                    <div className={`flex justify-between rounded-lg text-white m-2  shadow-sm  ${optionItem.isCorrect ? 'bg-green-600 ' : 'bg-red-600 '}`}>
+                      <p className="p-2">{optionItem.option}</p>
+                      <button
+                        onClick={() => dispatch(removeOption({ questionIndex, optionIndex }))}
+                        type="button"
+                        className={`text-white text-lg h-full p-2 hover:bg-white duration-300 transition-all rounded-r-lg ${optionItem.isCorrect ? 'hover:text-green-600' : 'hover:text-red-600'}`}
+                      >
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-            <div className="m-5 p-3 shadow-lg rounded-lg">
-              <OptionForm questionIndex={questionIndex} />
+                ))}
+              </div>
+              <div className="m-5 p-3">
+                <OptionForm questionIndex={questionIndex} />
+              </div>
             </div>
           </motion.div>
         </div>
