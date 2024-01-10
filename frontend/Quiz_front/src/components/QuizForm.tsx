@@ -3,7 +3,7 @@ import { Quiz } from "../interface/interfaces";
 import { useAppSelector } from "../app/hooks";
 import { useDispatch } from "react-redux";
 import { setQuiz } from "../redux/quiz.redux";
-
+import { motion } from 'framer-motion'
 export const QuizForm = () => {
   const dispatch = useDispatch();
   const [quizData, setQuizData] = useState<Quiz>({} as Quiz);
@@ -32,8 +32,9 @@ export const QuizForm = () => {
 
   return (
     <>
-      <div className="container mx-auto p-3 border relative bottom-6 h-full w-full rounded-lg">
-        <form onSubmit={handleSubmit} className="">
+      <div className="container mx-auto p-3 border relative bottom-6  rounded-lg">
+        <h1 className="text-center text-3xl border-b w-full p-2">Crear una nueva prueba</h1>
+        <form onSubmit={handleSubmit} className="p-3">
           <div className="m-2">
             <label htmlFor="title">Title</label>
             <input
@@ -59,7 +60,14 @@ export const QuizForm = () => {
           </div>
 
           <div className="w-full flex justify-center  text-white  ">
-            <button type="submit" className="p-3 bg-green-400 rounded-lg w-80 hover:bg-green-700 duration-300 transition-all" ><i className="fa-solid fa-play text-2xl"></i> </button>
+            <motion.button
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              type="submit"
+              className="p-3 bg-green-400 rounded-lg w-80" >
+              <i className="fa-solid fa-play text-2xl"></i>
+            </motion.button>
           </div>
         </form>
         <div className="mt-3 w-full flex justify-center ">

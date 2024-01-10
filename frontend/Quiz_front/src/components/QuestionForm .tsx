@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addQuestion } from "../redux/quiz.redux";
 import { useAppSelector } from "../app/hooks";
 import useFetchCreateQuiz from "../hooks/useFetchcreateQuiz";
+import { motion } from 'framer-motion'
 import './style/QuestionForm.css'
 export const FormQuestions = () => {
     const quiz = useAppSelector((state) => state.createQuiz.quiz)
@@ -63,7 +64,7 @@ export const FormQuestions = () => {
     return (
         quiz && <>
 
-            <div className="border relative bottom-6 h-full w-full mt-10 rounded-lg">
+            <div className="border relative bottom-6  mt-10 rounded-lg">
 
                 <div className="p-3 rounded-t w-max-screen  border-b  font-bold text-xl text-center" >
                     <p> - {quiz?.title}</p>
@@ -95,9 +96,15 @@ export const FormQuestions = () => {
                         </div>
 
                         <div className="w-full flex justify-center  text-white mt-8"   >
-                            <button type="button" className="p-3 bg-green-400 rounded-lg w-80 hover:bg-green-700 duration-300 transition-all" onClick={handleAddQuestion}>
+                            <motion.button
+                                type="button"
+                                whileHover={{ scale: 1.2 }}
+                                whileTap={{ scale: 0.9 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                                className="p-3 bg-green-400 rounded-lg w-80"
+                                onClick={handleAddQuestion}>
                                 Agregar
-                            </button>
+                            </motion.button>
                         </div>
 
 
@@ -109,13 +116,16 @@ export const FormQuestions = () => {
                 </div>
                 <div className="flex justify-center p-2">
                     <div className="text-center">
-                        <p className="text-red-600 m-2">{message}</p>
-                        <button
+                        <motion.button
                             type="button"
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 0.9 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
                             onClick={handleAddQuiz}
-                            className="bg-green-400 p-3 w-80 rounded-lg text-white text-xl hover:bg-green-700 duration-300 transition-all">
-                            create quiz
-                        </button>
+                            className="bg-green-400 p-3 w-80 rounded-lg text-white text-xl">
+                            Create prueba
+                        </motion.button>
+                        <p className="text-red-600 m-3">{message}</p>
                     </div>
                 </div>
             </div>

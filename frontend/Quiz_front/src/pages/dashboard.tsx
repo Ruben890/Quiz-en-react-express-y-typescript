@@ -18,7 +18,7 @@ const Dashboard = () => {
             <MyQuiz />
           </section>
 
-          <section className="w-full h-screen mt-9">
+          <section className="w-full h-screen">
             <div>
               <QuizForm />
             </div>
