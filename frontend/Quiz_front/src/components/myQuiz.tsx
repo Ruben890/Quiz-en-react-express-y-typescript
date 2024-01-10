@@ -12,7 +12,7 @@ const MyQuiz = () => {
                 quiz
                     .filter((quizItem) => quizItem.userId === user.id)
                     .map((filteredQuizItem) => (
-                        <div key={filteredQuizItem.id} className="container mx-auto p-3 shadow-lg rounded-lg m-3">
+                        <div key={filteredQuizItem.id} className="cursor-pointer container mx-auto p-3 shadow-lg rounded-lg m-3">
                             <p>{filteredQuizItem.title}</p>
                         </div>
                     ))

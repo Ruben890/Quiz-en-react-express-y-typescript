@@ -9,7 +9,7 @@ const Quiz = () => {
     <>
       {quiz.length ? (
         quiz.map((quizItem) => (
-          <div className="card w-96 bg-base-100 shadow-xl" key={quizItem.id}>
+          <div className="card w-96 bg-base-100 shadow-xl m-4" key={quizItem.id}>
             <div className="card-body">
               <h2 className="card-title">{quizItem.title}</h2>
               <p>{quizItem.description}</p>
