@@ -38,14 +38,14 @@ export const FormQuestions = () => {
     const handleAddQuiz = async () => {
         try {
             if (!quiz?.Questions.create || quiz.Questions.create.length === 0) {
-                setMessage('Error: No se ha creado al menos una pregunta.');
+                setMessage('No se ha creado al menos una pregunta.');
                 return;
             }
 
             const questionsWithoutOptions = quiz.Questions.create.filter(question => !question.options || question.options.create.length === 0);
 
             if (questionsWithoutOptions.length > 0) {
-                setMessage('Error: Al menos una pregunta no tiene opciones agregadas.');
+                setMessage('Al menos una pregunta no tiene opciones agregadas.');
                 return;
             }
 
