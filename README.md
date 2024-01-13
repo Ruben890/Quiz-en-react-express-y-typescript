@@ -30,18 +30,18 @@ cp .env.example .env
 ```
 
 ## 4. Ejecutar Migraciones
+
+Asegúrate de tener [Prisma CLI](https://www.prisma.io/docs/getting-started/installation) instalado globalmente:
+
+```bash
+npm install -g prisma
+```
+
 Aplica las migraciones de Prisma para crear el esquema de la base de datos. Asegúrate de estar en el directorio donde se encuentra la carpeta "prisma":
 
 ```bash
 cd backend/src/prisma
 npx prisma migrate dev --name init
-```
-
-## 5. Configurar Prisma
-Asegúrate de tener [Prisma CLI](https://www.prisma.io/docs/getting-started/installation) instalado globalmente:
-
-```bash
-npm install -g prisma
 ```
 
 ## 6. Ejecutar Proyecto
