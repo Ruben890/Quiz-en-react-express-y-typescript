@@ -44,6 +44,15 @@ cd backend/src/prisma
 npx prisma migrate dev --name init
 ```
 
+
+### 5. Configurar Prisma
+Asegúrate de tener Prisma CLI instalado globalmente:
+```bash
+npm install -g prisma
+```
+
+
+
 ## 6. Ejecutar Proyecto
 Asegúrate de estar en el directorio de cada proyecto, tanto frontend como backend, y ejecuta:
 
