@@ -46,7 +46,8 @@ npx prisma migrate dev --name init
 
 
 ### 5. Configurar Prisma
-Asegúrate de tener Prisma CLI instalado globalmente:
+
+Asegúrate de tener [Prisma CLI](https://www.prisma.io/docs/getting-started/quickstart) instalado globalmente:
 ```bash
 npm install -g prisma
 ```
