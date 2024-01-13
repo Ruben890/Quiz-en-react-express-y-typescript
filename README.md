@@ -3,10 +3,7 @@
 
 ## Screenshots
 
-![Screenshot 1](./img/imgen-1.png)
-![Screenshot 2](./img/imgen-2.png)
-![Screenshot 3](./img/imgen-3.png)
-![Screenshot 4](./img/imgen-4.png)
+
 
 ## 1. Inicio Rápido
 Clona el repositorio:
