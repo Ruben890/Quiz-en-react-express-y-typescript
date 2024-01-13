@@ -45,11 +45,12 @@ npx prisma migrate dev --name init
 ```
 
 
-### 5. Configurar Prisma
+### 5. Generar el Cliente de Prisma
 
 Asegúrate de tener [Prisma CLI](https://www.prisma.io/docs/getting-started/quickstart) instalado globalmente:
+
 ```bash
-npm install -g prisma
+ npx prisma generate
 ```
 
 
