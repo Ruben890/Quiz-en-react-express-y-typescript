@@ -1,30 +1,56 @@
-# React + TypeScript + Vite
+```markdown
+# Aplicación de Quiz - React, Express y TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Screenshots
 
-Currently, two official plugins are available:
+![Screenshot 1](./img/imgen-1.png)
+![Screenshot 2](./img/imgen-2.png)
+![Screenshot 3](./img/imgen-3.png)
+![Screenshot 4](./img/imgen-4.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 1. Inicio Rápido
+Clona el repositorio:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+git clone https://github.com/Ruben890/Quiz-en-react-express-y-typescript.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 2. Instalar Dependencias
+Asegúrate de tener todas las dependencias instaladas ejecutando:
+
+```bash
+npm install
+```
+
+## 3. Configurar Variables de Entorno del Proyecto
+Copia el archivo de ejemplo `.env` y ajústalo con los detalles de conexión de tu base de datos:
+
+```bash
+cp .env.example .env
+```
+
+## 4. Ejecutar Migraciones
+Aplica las migraciones de Prisma para crear el esquema de la base de datos. Asegúrate de estar en el directorio donde se encuentra la carpeta "prisma":
+
+```bash
+cd backend/src/prisma
+npx prisma migrate dev --name init
+```
+
+## 5. Configurar Prisma
+Asegúrate de tener [Prisma CLI](https://www.prisma.io/docs/getting-started/installation) instalado globalmente:
+
+```bash
+npm install -g prisma
+```
+
+## 6. Ejecutar Proyecto
+Asegúrate de estar en el directorio de cada proyecto, tanto frontend como backend, y ejecuta:
+
+```bash
+npm run dev 
+```
+
+Este conjunto de pasos te permitirá tener la aplicación de Quiz en React, Express y TypeScript funcionando correctamente. ¡Disfruta explorando el proyecto!
+```
+
