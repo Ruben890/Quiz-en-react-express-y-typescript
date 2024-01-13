@@ -50,7 +50,6 @@ Asegúrate de estar en el directorio de cada proyecto, tanto frontend como backe
 ```bash
 npm run dev 
 ```
-
 Este conjunto de pasos te permitirá tener la aplicación de Quiz en React, Express y TypeScript funcionando correctamente. ¡Disfruta explorando el proyecto!
-```
+
 
