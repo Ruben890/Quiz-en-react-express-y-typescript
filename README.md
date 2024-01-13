@@ -31,7 +31,7 @@ cp .env.example .env
 
 ## 4. Ejecutar Migraciones
 
-Asegúrate de tener [Prisma CLI](https://www.prisma.io/docs/getting-started/installation) instalado globalmente:
+Asegúrate de tener [Prisma CLI](https://www.prisma.io/docs/getting-started/quickstart) instalado globalmente:
 
 ```bash
 npm install -g prisma
