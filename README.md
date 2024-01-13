@@ -23,7 +23,7 @@ npm install
 ```
 
 ## 3. Configurar Variables de Entorno del Proyecto
-Copia el archivo de ejemplo `.env` y ajústalo con los detalles de conexión de tu base de datos:
+Copia el archivo de ejemplo `.env.example` y ajústalo con los detalles de conexión de tu base de datos:
 
 ```bash
 cp .env.example .env
