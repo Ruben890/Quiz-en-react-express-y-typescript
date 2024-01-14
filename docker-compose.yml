@@ -3,7 +3,7 @@ version: '3'
 services:
   # Servicio para el frontend React
   frontend:
-    image: node:21-alpine3.18
+    image: node:20.11-alpine3.18
     working_dir: /app/frontend
     volumes:
       - ./frontend:/app/frontend
@@ -15,7 +15,7 @@ services:
 
   # Servicio para el backend Express
   backend:
-    image: node:21-alpine3.18
+    image: node:20.11-alpine3.18
     working_dir: /app/backend
     volumes:
       - ./backend:/app/backend
