@@ -8,6 +8,10 @@ const Quiz = () => {
     return
   }
 
+  const formatTime = (time: string) => {
+    return time.length <= 2 ? `${time} min` : `${time} hr`;
+  };
+
   return (
     <>
       {quiz.length ? (
@@ -17,6 +21,7 @@ const Quiz = () => {
             key={quizItem.id}>
             <div className="card-body">
               <h2 className="card-title">{quizItem.title}</h2>
+              <p><i className="fa-solid fa-hourglass-start text-2xl"></i> {formatTime(quizItem.time)}</p>
               <p>{quizItem.description}</p>
               <div className="card-actions justify-end">
                 <button className="btn btn-primary">Start</button>
