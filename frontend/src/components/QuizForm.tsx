@@ -12,7 +12,7 @@ export const QuizForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    
+
     setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user?.id, [name]: value }));
     if (name === 'time') {
       // Solo aplicar la lógica de formato de tiempo si el nombre es 'time'
@@ -72,7 +72,6 @@ export const QuizForm = () => {
                 placeholder="HH:mm"
                 value={quizData.time}
                 onChange={handleChange}
-                pattern="^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"
                 title="Please enter a valid time in HH:mm format"
                 className=" border p-2 m-2 flex-shrink-0 outline-none rounded-s"
               />
