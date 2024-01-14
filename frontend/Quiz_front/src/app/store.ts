@@ -5,7 +5,7 @@ import quizRedux from "../redux/quiz.redux";
 export const store = configureStore({
     reducer: {
         auth: authUserRedux,
-        createQuiz: quizRedux
+        QuizManage: quizRedux
     }
 })
 

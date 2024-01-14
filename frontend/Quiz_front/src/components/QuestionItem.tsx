@@ -7,7 +7,7 @@ import { removeOption, removeQuestion } from "../redux/quiz.redux";
 
 export const QuestionItem = () => {
   const dispatch = useDispatch();
-  const quiz = useAppSelector((state) => state.createQuiz.quiz);
+  const quiz = useAppSelector((state) => state.QuizManage.quiz);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   if (!quiz) {

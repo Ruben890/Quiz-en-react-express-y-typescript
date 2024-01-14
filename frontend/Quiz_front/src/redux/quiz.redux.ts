@@ -1,8 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Quiz, Question, Option } from "../interface/interfaces";
 
+interface QuestionWithNested extends Question {
+  options: { create: Option[] };
+}
+
+interface NestedQuiz  extends Quiz{
+  Questions: { create: QuestionWithNested[] };
+}
+
 interface QuizState {
-  quiz: Quiz | null;
+  quiz: NestedQuiz | null;
 }
 
 const initialState: QuizState = {
@@ -15,36 +23,34 @@ const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
-    setQuiz: (state, action: PayloadAction<Quiz | null>) => {
+    setQuiz: (state, action: PayloadAction<NestedQuiz | null>) => {
       state.quiz = action.payload;
     },
     addQuestion: (state, action: PayloadAction<Question>) => {
-      if (state.quiz) {
-       
-        state.quiz.Questions = { create: state.quiz.Questions?.create || [] };
-        state.quiz.Questions.create.push({
+      const { quiz } = state;
+      if (quiz) {
+        quiz.Questions = { create: quiz.Questions?.create || [] };
+        quiz.Questions.create.push({
           ...action.payload,
-          options: { create: [] }, 
+          options: { create: [] },
         });
       }
     },
     removeQuestion: (state, action: PayloadAction<number>) => {
-      if (state.quiz && state.quiz.Questions) {
+      const { quiz } = state;
+      if (quiz && quiz.Questions) {
         const indexToRemove = action.payload;
-        state.quiz.Questions.create.splice(indexToRemove, 1);
+        quiz.Questions.create.splice(indexToRemove, 1);
       }
     },
     addOption: (
       state,
       action: PayloadAction<{ questionIndex: number; option: Option }>
     ) => {
+      const { quiz } = state;
       const { questionIndex, option } = action.payload;
-      if (
-        state.quiz &&
-        state.quiz.Questions &&
-        state.quiz.Questions.create[questionIndex]
-      ) {
-        const question = state.quiz.Questions.create[questionIndex];
+      if (quiz && quiz.Questions && quiz.Questions.create[questionIndex]) {
+        const question = quiz.Questions.create[questionIndex];
 
         question.options = { create: question.options?.create || [] };
 
@@ -57,19 +63,15 @@ const quizSlice = createSlice({
       state,
       action: PayloadAction<{ questionIndex: number; optionIndex: number }>
     ) => {
+      const { quiz } = state;
       const { questionIndex, optionIndex } = action.payload;
-      if (
-        state.quiz &&
-        state.quiz.Questions &&
-        state.quiz.Questions.create[questionIndex]
-      ) {
-        state.quiz.Questions.create[questionIndex].options.create.splice(
+      if (quiz && quiz.Questions && quiz.Questions.create[questionIndex]) {
+        quiz.Questions.create[questionIndex].options.create.splice(
           optionIndex,
           1
         );
       }
     },
-  
   },
 });
 

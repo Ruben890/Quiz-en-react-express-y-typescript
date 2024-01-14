@@ -15,7 +15,6 @@ export interface Option {
     option: string;
     isCorrect: boolean;
     questionId?: number;
-    Question?: Question;
 }
 
 // points.ts
@@ -31,8 +30,7 @@ export interface Question {
     id?: number;
     question: string;
     points: number;
-    quizId?: number;
-    options: { create: Option[] }; // Cambio aquí
+    quizId?: number; 
     Quiz?: Quiz;
 }
 
@@ -42,5 +40,4 @@ export interface Quiz {
     title: string;
     userId: number;
     description: string;
-    Questions: { create: Question[] }; // Cambio aquí
 }

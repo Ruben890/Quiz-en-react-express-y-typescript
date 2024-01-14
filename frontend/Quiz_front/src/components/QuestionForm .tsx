@@ -7,7 +7,7 @@ import useFetchCreateQuiz from "../hooks/useFetchcreateQuiz";
 import { motion } from 'framer-motion'
 import './style/QuestionForm.css'
 export const FormQuestions = () => {
-    const quiz = useAppSelector((state) => state.createQuiz.quiz)
+    const quiz = useAppSelector((state) => state.QuizManage.quiz)
     const dispatch = useDispatch();
     const [question, setQuestion] = useState<string>('');
     const [points, setPoints] = useState<number>(0);
@@ -38,7 +38,7 @@ export const FormQuestions = () => {
 
     const handleAddQuiz = async () => {
         try {
-            if (!quiz?.Questions.create || quiz.Questions.create.length === 0) {
+            if (!quiz?.Questions) {
                 setMessage('No se ha creado al menos una pregunta.');
                 return;
             }
