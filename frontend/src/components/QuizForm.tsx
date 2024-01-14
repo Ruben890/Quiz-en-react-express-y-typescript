@@ -12,6 +12,7 @@ export const QuizForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    
     setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user?.id, [name]: value }));
     if (name === 'time') {
       // Solo aplicar la lógica de formato de tiempo si el nombre es 'time'
