@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 const MyQuiz = () => {
     const user = useAppSelector((state) => state.auth.myUser);
     const { quiz, isloading } = useFetchQuiz();
-    const userHasQuiz = quiz.some((quizItem) => quizItem.userId === user.id);
+    const userHasQuiz = quiz.some((quizItem) => quizItem.userId === user?.id);
 
     if (isloading) {
         return
@@ -17,7 +17,7 @@ const MyQuiz = () => {
             className="container mx-auto  border lg:h-full p-5 rounded-lg">
             {userHasQuiz ? (
                 quiz
-                    .filter((quizItem) => quizItem.userId === user.id)
+                    .filter((quizItem) => quizItem.userId === user?.id)
                     .map((filteredQuizItem) => (
                         <motion.div
                             whileHover={{ scale: 1.2 }}
