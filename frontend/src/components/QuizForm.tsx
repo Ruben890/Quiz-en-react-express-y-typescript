@@ -12,20 +12,26 @@ export const QuizForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-
-    // Eliminar cualquier carácter que no sea un número
-    const sanitizedValue = value.replace(/\D/g, '');
-
-    // Formatear automáticamente como HH:mm
-    if (sanitizedValue.length <= 2) {
-      // Menos de 3 caracteres, solo añadir los primeros caracteres
-      setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user?.id, [name]: sanitizedValue }));
+  
+    if (name === 'time') {
+      // Solo aplicar la lógica de formato de tiempo si el nombre es 'time'
+      const sanitizedValue = value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+  
+      // Formatear automáticamente como HH:mm
+      if (sanitizedValue.length <= 2) {
+        // Menos de 3 caracteres, solo añadir los primeros caracteres
+        setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user?.id, [name]: sanitizedValue }));
+      } else {
+        // Más de 2 caracteres, formatear como HH:mm
+        const formattedValue = `${sanitizedValue.slice(0, 2)}:${sanitizedValue.slice(2, 4)}`;
+        setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user?.id, [name]: formattedValue }));
+      }
     } else {
-      // Más de 2 caracteres, formatear como HH:mm
-      const formattedValue = `${sanitizedValue.slice(0, 2)}:${sanitizedValue.slice(2, 4)}`;
-      setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user?.id, [name]: formattedValue }));
+      // Para otros campos, simplemente actualizar el valor sin formato
+      setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user?.id, [name]: value }));
     }
   };
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
