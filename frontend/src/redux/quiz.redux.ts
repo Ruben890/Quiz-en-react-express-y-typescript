@@ -1,13 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Quiz, Question, Option } from "../interface/interfaces";
+import { NestedQuiz, Question, Option  } from "../interface/interfaces";
 
-interface QuestionWithNested extends Question {
-  options: { create: Option[] };
-}
-
-interface NestedQuiz  extends Quiz{
-  Questions: { create: QuestionWithNested[] };
-}
 
 interface QuizState {
   quiz: NestedQuiz | null;

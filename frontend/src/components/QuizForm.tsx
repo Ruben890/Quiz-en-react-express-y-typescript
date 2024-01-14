@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { Quiz } from "../interface/interfaces";
+import { NestedQuiz } from "../interface/interfaces";
 import { useAppSelector } from "../app/hooks";
 import { useDispatch } from "react-redux";
 import { setQuiz } from "../redux/quiz.redux";
 import { motion } from 'framer-motion'
 export const QuizForm = () => {
   const dispatch = useDispatch();
-  const [quizData, setQuizData] = useState<Quiz>({} as Quiz);
+  const [quizData, setQuizData] = useState<NestedQuiz>({} as NestedQuiz);
   const [message, setMessage] = useState<string>("");
   const user = useAppSelector((state) => state.auth.myUser);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user.id, [name]: value }));
+    setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user?.id, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {

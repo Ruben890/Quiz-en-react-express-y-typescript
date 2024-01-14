@@ -29,8 +29,8 @@ export const FormQuestions = () => {
             return;
         }
 
-        dispatch(addQuestion({ question, points, options: [] }));
-        
+        dispatch(addQuestion({ question, points }));
+
         setQuestion('');
         setPoints(0);
     };

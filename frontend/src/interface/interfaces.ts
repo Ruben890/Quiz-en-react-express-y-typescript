@@ -1,5 +1,6 @@
 // user.ts
 export interface User {
+    id?: number;
     username: string;
     name: string;
     lastname: string;
@@ -30,7 +31,7 @@ export interface Question {
     id?: number;
     question: string;
     points: number;
-    quizId?: number; 
+    quizId?: number;
     Quiz?: Quiz;
 }
 
@@ -38,6 +39,15 @@ export interface Question {
 export interface Quiz {
     id?: number;
     title: string;
-    userId: number;
+    userId?: number;
     description: string;
+}
+
+
+export interface QuestionWithNested extends Question {
+    options: { create: Option[] };
+}
+
+export interface NestedQuiz extends Quiz {
+    Questions: { create: QuestionWithNested[] };
 }
