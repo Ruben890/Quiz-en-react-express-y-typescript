@@ -36,7 +36,7 @@ export const QuizForm = () => {
 
 
 
-    if (!quizData.title || !quizData.description) {
+    if (!quizData.title || !quizData.description || quizData.time) {
       setMessage("Por favor, complete todos los campos.");
       return;
     }
