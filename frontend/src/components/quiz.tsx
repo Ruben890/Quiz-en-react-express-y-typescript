@@ -31,7 +31,7 @@ const Quiz = () => {
             <div className="card-body">
               <h2 className="card-title">{quizItem.title}</h2>
               <p><i className="fa-solid fa-hourglass-start text-2xl"></i> {formatTime(quizItem.time)}</p>
-              <p>{quizItem.description}</p>
+              <p className="h-20 w-full overflow-auto">{quizItem.description}</p>
               <div className="card-actions justify-end">
                 <button className="btn btn-primary" onClick={() => showModal(quizIndex)}>Start</button>
               </div>
