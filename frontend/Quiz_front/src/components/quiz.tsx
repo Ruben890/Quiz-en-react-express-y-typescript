@@ -25,7 +25,7 @@ const Quiz = () => {
           </div>
         ))
       ) : (
-        <div className="h-screen flex items-center justify-center">
+        <div className="h-screen w-screen flex items-center justify-center">
           <div>
             <p className="text-6xl">No hay datos</p>
             <button

@@ -30,7 +30,7 @@ export const FormQuestions = () => {
         }
 
         dispatch(addQuestion({ question, points, options: [] }));
-
+        
         setQuestion('');
         setPoints(0);
     };
@@ -53,6 +53,7 @@ export const FormQuestions = () => {
             setMessage('');
 
             await fetchData(quiz);
+            window.location.reload()
 
         } catch (error) {
             console.log(error);
