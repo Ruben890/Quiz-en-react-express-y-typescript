@@ -12,7 +12,19 @@ export const QuizForm = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user?.id, [name]: value }));
+
+    // Eliminar cualquier carácter que no sea un número
+    const sanitizedValue = value.replace(/\D/g, '');
+
+    // Formatear automáticamente como HH:mm
+    if (sanitizedValue.length <= 2) {
+      // Menos de 3 caracteres, solo añadir los primeros caracteres
+      setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user?.id, [name]: sanitizedValue }));
+    } else {
+      // Más de 2 caracteres, formatear como HH:mm
+      const formattedValue = `${sanitizedValue.slice(0, 2)}:${sanitizedValue.slice(2, 4)}`;
+      setQuizData((prevQuizData) => ({ ...prevQuizData, userId: user?.id, [name]: formattedValue }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -46,7 +58,18 @@ export const QuizForm = () => {
               className="block w-full p-2 m-2"
               maxLength={100}
             />
-            <label htmlFor="description">Description</label>
+            <label htmlFor="time">Time: </label>
+            <input
+              type="text"
+              name="time"
+              placeholder="HH:mm"
+              value={quizData.time}
+              onChange={handleChange}
+              pattern="^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"
+              title="Please enter a valid time in HH:mm format"
+              className="block w-full p-2 m-2"
+            />
+            <label htmlFor="description" className="block">Description</label>
             <textarea
               name="description"
               placeholder="description"

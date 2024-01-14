@@ -39,8 +39,10 @@ export interface Question {
 export interface Quiz {
     id?: number;
     title: string;
-    userId?: number;
     description: string;
+    time:string;
+    userId?: number;
+    
 }
 
 

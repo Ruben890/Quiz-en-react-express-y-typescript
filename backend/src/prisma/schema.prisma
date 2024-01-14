@@ -21,7 +21,7 @@ model User {
 
 model Option {
   id         Int       @id @default(autoincrement())
-  option    String
+  option     String
   isCorrect  Boolean   @default(false)
   questionId Int?
   Question   Question? @relation(fields: [questionId], references: [id])
@@ -47,6 +47,7 @@ model Quiz {
   id          Int        @id @default(autoincrement())
   title       String
   description String     @db.VarChar(500)
+  time        String
   userId      Int
   User        User       @relation(fields: [userId], references: [id])
   Questions   Question[]
