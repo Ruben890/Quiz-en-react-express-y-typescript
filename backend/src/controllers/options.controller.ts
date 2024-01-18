@@ -5,7 +5,7 @@ import CrudService from "../utils/crudServices";
 const OptionService = new CrudService('option');
 
 
-export const GetOptionsCTR = async (req: Request, res: Response) => {
+export const GetAllOptionsCTR = async (req: Request, res: Response) => {
     try {
         const page = req.query.page ? parseInt(req.query.page as string, 10) : 0;
         const pageSize = 10;
