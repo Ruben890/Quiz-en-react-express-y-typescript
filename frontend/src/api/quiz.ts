@@ -2,9 +2,10 @@ import axios, { AxiosInstance } from "axios";
 import Cookies from "js-cookie";
 import { Quiz } from "../interface/interfaces";
 
-const apiURL = process.env.REACT_APP_API_URL;
+const apiURL = import.meta.env.VITE_SOME_KEY;
+
 const quizApi: AxiosInstance = axios.create({
-    baseURL: apiURL ? `${apiURL}quiz/` : undefined,
+    baseURL: `http://localhost:4000/quiz/`,
     headers: {
         'Content-Type': 'application/json',
         'Authorization': `${Cookies.get('JWTtoken')}`
@@ -12,6 +13,7 @@ const quizApi: AxiosInstance = axios.create({
 });
 
 export const getAllQuiz = async (): Promise<Quiz[]> => {
+    console.log("api url" + apiURL)
     try {
         const response = await quizApi.get('/');
         return response.data; // Retorna los datos obtenidos
@@ -19,6 +21,7 @@ export const getAllQuiz = async (): Promise<Quiz[]> => {
         console.error("Error fetching quiz:", error);
         throw error; // Relanza el error para que el código que llama pueda manejarlo
     }
+    
 };
 
 
