@@ -2,10 +2,10 @@ import axios, { AxiosInstance } from "axios";
 import Cookies from "js-cookie";
 import { Quiz } from "../interface/interfaces";
 
-const apiURL = import.meta.env.VITE_SOME_KEY;
+
 
 const quizApi: AxiosInstance = axios.create({
-    baseURL: `http://localhost:4000/quiz/`,
+    baseURL: "http://localhost:4000/quiz/",
     headers: {
         'Content-Type': 'application/json',
         'Authorization': `${Cookies.get('JWTtoken')}`
@@ -13,7 +13,6 @@ const quizApi: AxiosInstance = axios.create({
 });
 
 export const getAllQuiz = async (): Promise<Quiz[]> => {
-    console.log("api url" + apiURL)
     try {
         const response = await quizApi.get('/');
         return response.data; // Retorna los datos obtenidos

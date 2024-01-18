@@ -3,9 +3,9 @@ import Cookies from "js-cookie";
 import { User } from "../interface/interfaces";
 
 
-const apiURL =  import.meta.env.VITE_BACKEND_URL;
+
 const authApi: AxiosInstance = axios.create({
-  baseURL: `http://localhost:4000/auth`,
+  baseURL: "http://localhost:4000/auth",
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `${Cookies.get('JWTtoken')}`
