@@ -2,8 +2,10 @@ import axios, { AxiosInstance } from "axios";
 import Cookies from "js-cookie";
 import { User } from "../interface/interfaces";
 
+
+const apiURL = process.env.REACT_APP_API_URL;
 const authApi: AxiosInstance = axios.create({
-  baseURL: "http://localhost:4000/auth",
+  baseURL: apiURL ? `${apiURL}auth` : undefined,
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `${Cookies.get('JWTtoken')}`

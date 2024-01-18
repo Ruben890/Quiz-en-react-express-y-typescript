@@ -2,9 +2,9 @@ import axios, { AxiosInstance } from "axios";
 import Cookies from "js-cookie";
 import { Quiz } from "../interface/interfaces";
 
-
+const apiURL = process.env.REACT_APP_API_URL;
 const quizApi: AxiosInstance = axios.create({
-    baseURL: "http://localhost:4000/quiz/",
+    baseURL: apiURL ? `${apiURL}quiz/` : undefined,
     headers: {
         'Content-Type': 'application/json',
         'Authorization': `${Cookies.get('JWTtoken')}`
