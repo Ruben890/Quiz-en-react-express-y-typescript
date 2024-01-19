@@ -35,7 +35,7 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({ initialHours = 0
   return (
     <div>
       {timerFinished ? (
-        <div className='fixed  w-screen h-screen z-20 bg-opacity-75 bg-black top-0' style={{ left: 0 }}>
+        <div className='fixed  w-screen h-screen z-20 bg-opacity-75 bg-black top-0 left-0'>
           <div className='flex items-center justify-center h-full'>
             <div className='shadow-gray-900 shadow-lg p-5 rounded-lg bg-white text-black'>
               <i className="fa-sharp fa-regular fa-clock text-9xl text-red-500  flex w-full justify-center mb-10 mt-5 fa-beat"></i>

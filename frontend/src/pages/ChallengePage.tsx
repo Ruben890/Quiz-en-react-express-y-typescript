@@ -26,7 +26,7 @@ const ChallengePage = () => {
                     </div>
                 </nav>
             </header>
-            <main>
+            <main className="container mx-auto mt-20">
                 {/* Contenido principal de la página */}
             </main>
         </>
