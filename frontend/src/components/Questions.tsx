@@ -37,6 +37,13 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
                     <button className="p-2 border  rounded-lg text-2xl">
                         <i className="fa-solid fa-arrow-left"></i>
                     </button>
+
+                    <div>
+                        <ul className="flex text-center mt-3 text-blue-600 underline">
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
                     <button className="p-2 border  rounded-lg text-2xl" >
                         <i className="fa-solid fa-arrow-right"></i>
                     </button>
