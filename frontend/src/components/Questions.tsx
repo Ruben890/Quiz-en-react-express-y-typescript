@@ -37,8 +37,8 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
               <div key={questionItems.id}>
                 <div className="flex m-5  shadow-lg rounded-lg justify-between ">
                   <h2 className="p-3 font-bold">{questionItems.question}</h2>
-                  <div className="h-full bg-green-500 p-3 rounded-r">
-                    <p> Puntos: {questionItems.points}</p>
+                  <div className="h-full bg-green-500 p-3 rounded-r text-center text-white">
+                    <p className="text-wrap text-lg"><span className="font-bold text-lg">Puntos: </span>{questionItems.points}</p>
                   </div>
                 </div>
                 <Options idQuestions={questionItems.id} />
