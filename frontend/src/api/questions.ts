@@ -11,9 +11,9 @@ const QuestionsAPI: AxiosInstance = axios.create({
 })
 
 
-export const getAllQuestions = async (): Promise<Question[]> => {
+export const getQuestionsByQuizId = async (id: number): Promise<Question[]> => {
     try {
-        const response = await QuestionsAPI.get('/');
+        const response = await QuestionsAPI.get(`/${id}`);
         return response.data
 
     } catch (error) {

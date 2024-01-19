@@ -11,9 +11,9 @@ const OptionsAPI: AxiosInstance = axios.create({
 })
 
 
-export const getAllOptions = async (): Promise<Option[]> => {
+export const getOptionsByQuestionId = async (id:number): Promise<Option[]> => {
     try {
-        const response = await OptionsAPI.get("/")
+        const response = await OptionsAPI.get(`/${id}`)
         return response.data
     } catch (error) {
         console.error(error)
