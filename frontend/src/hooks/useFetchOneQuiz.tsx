@@ -2,18 +2,20 @@ import { useState, useEffect } from "react";
 import { getOneQuiz } from "../api/quiz";
 import { useDispatch } from "react-redux";
 import { AxiosError } from "axios";
-
+import { Quiz } from "../interface/interfaces";
 
 const useFetchOneQuiz = (id: number) => {
   const dispatch = useDispatch();
+  const [quiz, setQuiz] = useState<Quiz>({} as Quiz);
   const [message, setMessage] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true); 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await getOneQuiz(id);
-        return response.data;
+        setQuiz(response);
+        setMessage(""); 
       } catch (error: unknown) {
         if (error instanceof AxiosError) {
           setMessage(error.response?.data || "fatal error");
@@ -28,8 +30,8 @@ const useFetchOneQuiz = (id: number) => {
     fetchData();
   }, [id, dispatch]);
 
-  // Return any state or functions that you want to expose
-  return { message, loading };
+  
+  return { quiz, message, loading,  };
 };
 
 export default useFetchOneQuiz;

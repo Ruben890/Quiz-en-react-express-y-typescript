@@ -7,7 +7,7 @@ import { Loading } from "./components/loading";
 import Login from "./auth/login";
 import Register from "./auth/register";
 
-
+const ChallengePage = lazy(()=> import('./pages/ChallengePage'))
 const App = lazy(() => import('./App'));
 const Dashboard = lazy(() => import("./pages/dashboard"));
 
@@ -25,6 +25,7 @@ const Routes = () => {
 
           <Route element={<ProtectedRoute redirectTo="/login" />}>
             <Route element={<Dashboard />} path="/dashboard" />
+            <Route element={<ChallengePage/>} path="/challenge/:quizId"/>
           </Route>
         </RouteWithNotFound>
       </BrowserRouter>
