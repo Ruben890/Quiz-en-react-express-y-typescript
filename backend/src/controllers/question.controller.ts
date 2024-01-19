@@ -1,24 +1,27 @@
 import { Response, Request } from "express";
 import { Question } from "@prisma/client";
-import CrudService from "../utils/crudServices";
+import QuestionService from "../services/Questions.services";
 
 
-const QuestionCrud = new CrudService('question');
+const QuestionsServices = new QuestionService();
 
-export const GetAllQuestionCTR = async (req: Request, res: Response) => {
+
+export const GetQuestionsByQuizIdCTR = async (req: Request, res: Response): Promise<void> => {
     try {
-        const page = req.query.page ? parseInt(req.query.page as string, 10) : 1;
-        const pageSize = 10;
-        const skip = (page - 1) * pageSize;
+        const QuizId = Number(req.params.id);
 
-        const data: Question[] = await QuestionCrud.getAll({ skip, take: pageSize });
-        return res.status(200).json(data);
+     
+        const validationError = await QuestionsServices.ValidateQuiz(QuizId);
+        if (!validationError) {
+            res.status(404).json({ error: "Questions not fount" });
+            return;
+        }
+
+        const data: Question[] = await QuestionsServices.GetQuestionsByQuizId(QuizId);
+        res.status(200).json(data);
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).json({ error: "Internal server error" });
     }
-
 }
-
-
