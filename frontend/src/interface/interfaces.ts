@@ -20,7 +20,7 @@ export interface Option {
 
 // points.ts
 export interface Points {
-    id: number;
+    id?: number;
     point: number;
     userId: number;
     User: User;
