@@ -22,6 +22,7 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({ initialHours = 0
         if (prevTotalSeconds <= 0) {
           clearInterval(intervalId);
           setTimerFinished(true);
+          return 0;
         }
         return prevTotalSeconds - 1;
       });
