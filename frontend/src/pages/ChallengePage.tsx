@@ -2,7 +2,7 @@ import useTimeConverter from "../hooks/useTimeConverter";
 import useFetchOneQuiz from "../hooks/useFetchOneQuiz";
 import { CountdownTimer } from "../components/CountdownTimer";
 import { useParams } from "react-router";
-
+import { Questions } from "../components/Questions";
 const ChallengePage = () => {
     const params = useParams();
     const { quiz, loading } = useFetchOneQuiz(Number(params.quizId));
@@ -27,7 +27,9 @@ const ChallengePage = () => {
                 </nav>
             </header>
             <main className="container mx-auto mt-20">
-                {/* Contenido principal de la página */}
+                <section>
+                    <Questions quizId={quiz.id} />
+                </section>
             </main>
         </>
     );

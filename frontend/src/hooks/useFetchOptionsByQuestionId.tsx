@@ -3,7 +3,7 @@ import { getOptionsByQuestionId } from "../api/options";
 import { Option } from "../interface/interfaces";
 import { AxiosError } from "axios";
 
-const useFetchOption = (id: number) => {
+const useFetchOption = (id: number | undefined) => {
   const [options, setOptions] = useState<Option[]>([]);
   const [message, setMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
