@@ -1,6 +1,7 @@
 import React from "react";
 import useFetchQuestions from "../hooks/useFetchQuestionsByQuizId"
 import { Options } from "./Options";
+import ReactPaginate from "react-paginate";
 interface PropsQuestions {
     quizId: number | undefined
 }
@@ -33,21 +34,7 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
                     ))}
                 </div>
 
-                <div className="flex w-full justify-between m-3 mt-10 p-3 border rounded-lg">
-                    <button className="p-2 border  rounded-lg text-2xl">
-                        <i className="fa-solid fa-arrow-left"></i>
-                    </button>
-
-                    <div>
-                        <ul className="flex text-center mt-3 text-blue-600 underline">
-                            <li></li>
-                            <li></li>
-                        </ul>
-                    </div>
-                    <button className="p-2 border  rounded-lg text-2xl" >
-                        <i className="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
+               
             </div>
         </>
     )
