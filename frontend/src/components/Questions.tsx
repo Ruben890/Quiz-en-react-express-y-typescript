@@ -13,7 +13,7 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
     if (loading) {
         return
     }
-    console.log(questions)
+  
 
     return (
 
