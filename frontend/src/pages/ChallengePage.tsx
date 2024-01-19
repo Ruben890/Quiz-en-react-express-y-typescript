@@ -26,7 +26,7 @@ const ChallengePage = () => {
                     </div>
                 </nav>
             </header>
-            <main className="container mx-auto mt-20">
+            <main className="container mx-auto mt-20 items-center">
                 <section>
                     <Questions quizId={quiz.id} />
                 </section>

@@ -1,41 +1,55 @@
 import React from "react";
-import useFetchQuestions from "../hooks/useFetchQuestionsByQuizId"
+import useFetchQuestions from "../hooks/useFetchQuestionsByQuizId";
 import { Options } from "./Options";
-import ReactPaginate from "react-paginate";
+import { Pagination } from "./paginations";
+import usePagination from "../hooks/usePagination";
+
 interface PropsQuestions {
-    quizId: number | undefined
+  quizId: number | undefined;
 }
 
 export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
+  const { questions, loading } = useFetchQuestions(Number(quizId));
+
+  const pageSize = 1;
+  const pagination = usePagination({
+    itemsPerPages: pageSize,
+    items: questions,
+  });
 
 
-    const { questions, loading } = useFetchQuestions(Number(quizId));
+  if (loading) {
+    return
+  }
 
-    if (loading) {
-        return
-    }
-  
 
-    return (
 
-        <>
-            <div>
-                <div>
-                    {questions.map((questionItems) => (
-                        <div key={questionItems.id}>
-                            <div className="flex m-5  shadow-lg rounded-lg justify-between ">
-                                <h2 className="p-3 font-bold">{questionItems.question}</h2>
-                                <div className="h-full bg-green-500 p-3 rounded-r">
-                                    <p> Putos: {questionItems.points}</p>
-                                </div>
-                            </div>
-                            <Options idQuestions={questionItems.id} />
-                        </div>
-                    ))}
+  return (
+    <>
+      <div>
+        <div className="w-full m-2 container mx-auto">
+          {questions
+            .slice(
+              pagination.currentPage * pageSize,
+              (pagination.currentPage + 1) * pageSize
+            )
+            .map((questionItems) => (
+              <div key={questionItems.id}>
+                <div className="flex m-5  shadow-lg rounded-lg justify-between ">
+                  <h2 className="p-3 font-bold">{questionItems.question}</h2>
+                  <div className="h-full bg-green-500 p-3 rounded-r">
+                    <p> Puntos: {questionItems.points}</p>
+                  </div>
                 </div>
+                <Options idQuestions={questionItems.id} />
+              </div>
+            ))}
+        </div>
 
-               
-            </div>
-        </>
-    )
-}
+        <div className="absolute bottom-5 w-full left-0">
+          <Pagination pagination={pagination} />
+        </div>
+      </div>
+    </>
+  );
+};

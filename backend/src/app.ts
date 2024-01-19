@@ -11,7 +11,7 @@ import session from "express-session";
 const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:5173', // Allowing requests from this origin
+    origin: ['http://localhost:5173', '*'], // Allowing requests from this origin
     optionsSuccessStatus: 200
 }));
 
