@@ -8,7 +8,9 @@ interface PropsOptions {
 export const Options: React.FC<PropsOptions> = ({ idQuestions }) => {
     const [selectOption, setSelectoption] = useState<number | undefined>()
     const { options, loading } = useFetchOption(idQuestions);
-
+    if (loading) {
+        return
+    }
 
 
     return (
