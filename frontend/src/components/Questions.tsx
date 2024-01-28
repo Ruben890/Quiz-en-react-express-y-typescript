@@ -12,7 +12,7 @@ interface PropsQuestions {
 export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
   const optionSelect = useAppSelector((state) => state.QuizManage.questionSelect)
   const { questions, loading } = useFetchQuestions(Number(quizId));
-  const [Message, setMessage] = useState<string>("")
+  const [Message, setMessage] = useState<string>()
   const pageSize = 1;
   const pagination = usePagination({
     itemsPerPages: pageSize,
@@ -21,11 +21,11 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
 
   const showModal = (quizIndex: number) => {
     const allQuestionsCompleted = pagination.currentPage + 1 === optionSelect?.length;
-
+  
     if (allQuestionsCompleted) {
       setMessage("");
       const modal = document.getElementById(`my_modal_${quizIndex}`) as HTMLDialogElement | null;
-
+  
       if (modal) {
         modal.showModal();
       }
@@ -33,34 +33,35 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
       setMessage("Asegúrate de completar todas las preguntas antes de finalizar.");
     }
   };
-
+  
 
   useEffect(() => {
-    const handleCopyPaste = (event: ClipboardEvent) => {
+    const disableCopyPaste = (event: Event) => {
       event.preventDefault();
     };
-  
+
     const element = document.getElementById("questions-container");
     if (element) {
-      element.addEventListener("copy", handleCopyPaste);
-      element.addEventListener("cut", handleCopyPaste);
-      element.addEventListener("paste", handleCopyPaste);
+      element.addEventListener("copy", disableCopyPaste);
+      element.addEventListener("cut", disableCopyPaste);
+      element.addEventListener("paste", disableCopyPaste);
     }
-  
+
     return () => {
       if (element) {
-        element.removeEventListener("copy", handleCopyPaste);
-        element.removeEventListener("cut", handleCopyPaste);
-        element.removeEventListener("paste", handleCopyPaste);
+        element.removeEventListener("copy", disableCopyPaste);
+        element.removeEventListener("cut", disableCopyPaste);
+        element.removeEventListener("paste", disableCopyPaste);
       }
     };
   }, []);
-  
 
 
   if (loading) {
     return null;
   }
+  console.log(pagination.currentPage + 1)
+  console.log(optionSelect?.length)
   return (
     <>
       <div id="questions-container" style={{ userSelect: 'none', MozUserSelect: 'none', WebkitUserSelect: 'none', msUserSelect: 'none' }}>
