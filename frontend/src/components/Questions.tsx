@@ -74,7 +74,7 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
             )
           }
         </div>
-        <div className="absolute bottom-5 w-full left-0">
+        <div className="lg:absolute lg:bottom-5 w-full left-0 p-3 mt-3">
           <Pagination pagination={pagination} />
         </div>
       </div>
