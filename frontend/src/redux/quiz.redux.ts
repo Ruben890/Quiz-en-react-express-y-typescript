@@ -1,13 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { NestedQuiz, Question, Option  } from "../interface/interfaces";
+import { NestedQuiz, Question, Option, } from "../interface/interfaces";
 
+
+
+interface QuestionSelect {
+  questionId: number | undefined,
+  option: Option
+}
 
 interface QuizState {
   quiz: NestedQuiz | null;
+  questionSelect: QuestionSelect[] | null;
 }
 
 const initialState: QuizState = {
   quiz: null,
+  questionSelect: null,
 };
 
 const MAX_OPTIONS_PER_QUESTION = 5;
@@ -65,10 +73,22 @@ const quizSlice = createSlice({
         );
       }
     },
-  },
+
+    questionSelectOption(state, action: PayloadAction<QuestionSelect>) {
+      const { questionId, option } = action.payload;
+      const existingQuestion = state.questionSelect?.find(q => q.questionId === questionId);
+      if (existingQuestion) {
+        existingQuestion.option = option;
+      } else {
+        state.questionSelect = [...(state.questionSelect ?? []), action.payload];
+      }
+    },
+
+  }
 });
 
 export const {
+  questionSelectOption,
   setQuiz,
   addQuestion,
   removeQuestion,

@@ -1,3 +1,5 @@
+
+
 // user.ts
 export interface User {
     id?: number;
@@ -40,9 +42,9 @@ export interface Quiz {
     id?: number;
     title: string;
     description: string;
-    time:string;
+    time: string;
     userId?: number;
-    
+
 }
 
 
@@ -53,3 +55,4 @@ export interface QuestionWithNested extends Question {
 export interface NestedQuiz extends Quiz {
     Questions: { create: QuestionWithNested[] };
 }
+
