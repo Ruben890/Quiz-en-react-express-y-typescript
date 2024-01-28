@@ -1,49 +1,66 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useFetchQuestions from "../hooks/useFetchQuestionsByQuizId";
 import { Options } from "./Options";
 import { Pagination } from "./paginations";
 import usePagination from "../hooks/usePagination";
-
+import { useAppSelector } from "../app/hooks";
+import { Modal } from "./modal";
 interface PropsQuestions {
   quizId: number | undefined;
 }
 
 export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
+  const optionSelect = useAppSelector((state) => state.QuizManage.questionSelect)
   const { questions, loading } = useFetchQuestions(Number(quizId));
-
+  const [Message, setMessage] = useState<string>("")
   const pageSize = 1;
   const pagination = usePagination({
     itemsPerPages: pageSize,
     items: questions,
   });
 
+  const showModal = (quizIndex: number) => {
+    const allQuestionsCompleted = pagination.currentPage + 1 === optionSelect?.length;
+
+    if (allQuestionsCompleted) {
+      setMessage("");
+      const modal = document.getElementById(`my_modal_${quizIndex}`) as HTMLDialogElement | null;
+
+      if (modal) {
+        modal.showModal();
+      }
+    } else {
+      setMessage("Asegúrate de completar todas las preguntas antes de finalizar.");
+    }
+  };
+
+
   useEffect(() => {
-    const disableCopyPaste = (event: Event) => {
+    const handleCopyPaste = (event: ClipboardEvent) => {
       event.preventDefault();
     };
-
+  
     const element = document.getElementById("questions-container");
     if (element) {
-      element.addEventListener("copy", disableCopyPaste);
-      element.addEventListener("cut", disableCopyPaste);
-      element.addEventListener("paste", disableCopyPaste);
+      element.addEventListener("copy", handleCopyPaste);
+      element.addEventListener("cut", handleCopyPaste);
+      element.addEventListener("paste", handleCopyPaste);
     }
-
+  
     return () => {
       if (element) {
-        element.removeEventListener("copy", disableCopyPaste);
-        element.removeEventListener("cut", disableCopyPaste);
-        element.removeEventListener("paste", disableCopyPaste);
+        element.removeEventListener("copy", handleCopyPaste);
+        element.removeEventListener("cut", handleCopyPaste);
+        element.removeEventListener("paste", handleCopyPaste);
       }
     };
   }, []);
+  
 
 
   if (loading) {
-    return null; 
+    return null;
   }
-  console.log(pagination.currentPage +1 )
-  console.log()
   return (
     <>
       <div id="questions-container" style={{ userSelect: 'none', MozUserSelect: 'none', WebkitUserSelect: 'none', msUserSelect: 'none' }}>
@@ -65,15 +82,34 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
               </div>
             ))}
         </div>
-        <div className="flex  justify-center" >
-          {
-            pagination.currentPage + 1  === pagination.totalPages &&(
-              <button className="btn btn-success text-white w-80 text-lg">
-                 <a href="#">Terminar prueba</a>
+
+        {
+          pagination.currentPage + 1 === pagination.totalPages && (
+            <>
+              <div className="flex  justify-center" >
+                <button className="btn btn-success text-white w-80 text-lg" onClick={() => showModal(2)}>
+                  <a href="#">Terminar prueba</a>
+                </button>
+              </div>
+              <p className="text-center mt-5 text-xl text-red-600">{Message}</p>
+            </>
+          )
+        }
+
+        <Modal title="Confirmación de finalización" index={2}>
+          <div className="container mx-auto w-full flex justify-center">
+            <div className="p-4">
+              <p className="text-center text-lg">
+                ¿Estás seguro de que deseas finalizar la prueba?
+              </p>
+              <button className="btn btn-active btn-primary absolute bottom-6">
+                Finalizar prueba
               </button>
-            )
-          }
-        </div>
+            </div>
+          </div>
+        </Modal>
+
+
         <div className="lg:absolute lg:bottom-5 w-full left-0 p-3 mt-3">
           <Pagination pagination={pagination} />
         </div>
