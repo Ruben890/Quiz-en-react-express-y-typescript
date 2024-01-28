@@ -47,7 +47,7 @@ const Quiz = () => {
                       {quizItem.description}
                     </p>
                     <button className="btn btn-active btn-primary absolute bottom-6">
-                      <Link to={`/challenge/${quizItem.id}`} >Start</Link>
+                      <Link to={`/challenge/${quizItem.id}`} target="_blank" rel="noopener noreferrer" >Start</Link>
                     </button>
                   </div>
                 </div>
