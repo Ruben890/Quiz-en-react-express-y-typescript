@@ -38,10 +38,12 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
     };
   }, []);
 
+
   if (loading) {
     return null; 
   }
-
+  console.log(pagination.currentPage +1 )
+  console.log()
   return (
     <>
       <div id="questions-container" style={{ userSelect: 'none', MozUserSelect: 'none', WebkitUserSelect: 'none', msUserSelect: 'none' }}>
@@ -63,7 +65,15 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
               </div>
             ))}
         </div>
-
+        <div className="flex  justify-center" >
+          {
+            pagination.currentPage + 1  === pagination.totalPages &&(
+              <button className="btn btn-success text-white w-80 text-lg">
+                 <a href="#">Terminar prueba</a>
+              </button>
+            )
+          }
+        </div>
         <div className="absolute bottom-5 w-full left-0">
           <Pagination pagination={pagination} />
         </div>
