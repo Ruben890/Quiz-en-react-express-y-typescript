@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useFetchQuestions from "../hooks/useFetchQuestionsByQuizId";
 import { Options } from "./Options";
 import { Pagination } from "./paginations";
@@ -17,16 +17,34 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
     items: questions,
   });
 
+  useEffect(() => {
+    const disableCopyPaste = (event: Event) => {
+      event.preventDefault();
+    };
+
+    const element = document.getElementById("questions-container");
+    if (element) {
+      element.addEventListener("copy", disableCopyPaste);
+      element.addEventListener("cut", disableCopyPaste);
+      element.addEventListener("paste", disableCopyPaste);
+    }
+
+    return () => {
+      if (element) {
+        element.removeEventListener("copy", disableCopyPaste);
+        element.removeEventListener("cut", disableCopyPaste);
+        element.removeEventListener("paste", disableCopyPaste);
+      }
+    };
+  }, []);
 
   if (loading) {
-    return
+    return null; 
   }
-
-
 
   return (
     <>
-      <div>
+      <div id="questions-container" style={{ userSelect: 'none', MozUserSelect: 'none', WebkitUserSelect: 'none', msUserSelect: 'none' }}>
         <div className="w-full m-2 container mx-auto">
           {questions
             .slice(
