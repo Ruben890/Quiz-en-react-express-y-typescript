@@ -1,4 +1,4 @@
-import { PrismaClient, Point } from "@prisma/client";
+import { PrismaClient, Points } from "@prisma/client";
 
 class PointServices {
     private _prisma: PrismaClient;
@@ -7,7 +7,7 @@ class PointServices {
         this._prisma = new PrismaClient();
     }
 
-    public async assignPoint(point: Point) {
+    public async assignPoint(point: Points) {
         try {
             const user = await this._prisma.user.findUnique({
                 where: { id: point.userId }
@@ -17,7 +17,7 @@ class PointServices {
                 throw new Error("User not found");
             }
 
-            await this._prisma.point.create({
+            await this._prisma.points.create({
                 data: point
             });
 

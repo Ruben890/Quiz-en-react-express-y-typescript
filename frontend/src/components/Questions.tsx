@@ -5,15 +5,18 @@ import { Pagination } from "./paginations";
 import usePagination from "../hooks/usePagination";
 import { useAppSelector } from "../app/hooks";
 import { Modal } from "./modal";
+import assignPointAPI from "../api/points";
+import useFetchMyUser from "../hooks/useFetchMyUser";
 interface PropsQuestions {
   quizId: number | undefined;
 }
 
 export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
+  const userId = useAppSelector(state => state.auth.myUser?.id)
+  useFetchMyUser();
   const optionSelect = useAppSelector((state) => state.QuizManage.questionSelect)
   const { questions, loading } = useFetchQuestions(Number(quizId));
   const [Message, setMessage] = useState<string>()
-  
   const pageSize = 1;
   const pagination = usePagination({
     itemsPerPages: pageSize,
@@ -58,15 +61,34 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
     };
   }, []);
 
+  const assignPoint = async (): Promise<void> => {
+    try {
+        if (!optionSelect || optionSelect.length === 0) {
+            console.error("No hay puntos para asignar");
+            return; // Salir de la función si no hay puntos para asignar
+        }
+
+        const points: number[] = optionSelect.map(q => q.point as number);
+        let totalpoint: number = 0; 
+        for (const point of points) {
+            totalpoint += point; 
+        }
+
+        await assignPointAPI({ userId, point: totalpoint, quizId });
+
+    } catch (error) {
+        console.error("Error al asignar puntos:", error);
+        throw error;
+    }
+};
+
+
   
   if (loading) {
     return null;
   }
 
-  if(optionSelect?.length){
-    const point = optionSelect.some(q => q.option.isCorrect)
-    console.log(point)
-  }
+  
 
  
 
@@ -111,7 +133,8 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
               <p className="text-center text-lg">
                 ¿Estás seguro de que deseas finalizar la prueba?
               </p>
-              <button 
+              <button
+              onClick={assignPoint}
               className="btn btn-active btn-primary absolute bottom-6">
                 Finalizar prueba
               </button>

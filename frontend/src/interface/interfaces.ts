@@ -23,9 +23,9 @@ export interface Option {
 // points.ts
 export interface Points {
     id?: number;
-    point: number;
-    userId: number;
-    User: User;
+    point?: number;
+    userId?: number;
+    quizId?:number;
 }
 
 // question.ts
@@ -41,6 +41,7 @@ export interface Question {
 export interface Quiz {
     id?: number;
     title: string;
+    MinPoints: number;
     description: string;
     time: string;
     userId?: number;

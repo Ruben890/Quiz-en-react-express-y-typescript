@@ -1,4 +1,4 @@
-import { PrismaClient, Question, Point, } from "@prisma/client";
+import { PrismaClient, Question } from "@prisma/client";
 
 
 class QuestionService {

@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { Point } from "@prisma/client";
+import { Points } from "@prisma/client";
 import PointServices from "../services/Point.services";
 
 const pointServices = new PointServices();
 
 const assignPointCTR = async (req: Request, res: Response) => {
     try {
-        const data: Point = req.body;
+        const data: Points = req.body;
    
         if (!data) {
             return res.status(400).json({ error: "No data provided" });

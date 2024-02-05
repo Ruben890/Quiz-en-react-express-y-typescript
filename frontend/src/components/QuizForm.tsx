@@ -36,15 +36,13 @@ export const QuizForm = () => {
 
 
 
-    if (!quizData.title || 
-      !quizData.description || 
+    if (!quizData.title ||
+      !quizData.description ||
       !quizData.time
-      ) {
+    ) {
       setMessage("Por favor, complete todos los campos.");
       return;
     }
-
-
     dispatch(setQuiz(quizData));
     setMessage("");
   };
@@ -85,8 +83,15 @@ export const QuizForm = () => {
               </div>
 
             </div>
-
-
+            <label htmlFor="MinPoints" className="block">Min points</label>
+            <input type="number"
+              placeholder="min points"
+              min={0}
+              max={100}
+              name="MinPoints"
+              value={quizData.MinPoints} 
+              onChange={handleChange}
+              className=" border p-2 m-2 flex-shrink-0 outline-none rounded w-60"/>
             <label htmlFor="description" className="block">Description</label>
             <textarea
               name="description"

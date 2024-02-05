@@ -15,7 +15,7 @@ model User {
   email    String  @unique
   password String
   level    Int     @default(1)
-  Points   Point[]
+  Points   Points[]
   Quizzes  Quiz[]
 }
 
@@ -27,11 +27,13 @@ model Option {
   Question   Question? @relation(fields: [questionId], references: [id])
 }
 
-model Point {
+model Points {
   id     Int  @id @default(autoincrement())
   point  Int
   userId Int
+  quizId Int
   User   User @relation(fields: [userId], references: [id])
+  Quiz    Quiz @relation(fields: [quizId], references: [id])
 }
 
 model Question {
@@ -46,9 +48,11 @@ model Question {
 model Quiz {
   id          Int        @id @default(autoincrement())
   title       String
+  MinPoints     Int 
   description String     @db.VarChar(500)
   time        String
   userId      Int
   User        User       @relation(fields: [userId], references: [id])
   Questions   Question[]
+  Points      Points[]
 }
