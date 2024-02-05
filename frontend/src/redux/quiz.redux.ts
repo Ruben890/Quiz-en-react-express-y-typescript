@@ -5,7 +5,7 @@ import { NestedQuiz, Question, Option, } from "../interface/interfaces";
 
 interface QuestionSelect {
   questionId: number | undefined,
-  point:number | undefined
+  point: number | undefined
   option: Option
 }
 
@@ -76,9 +76,10 @@ const quizSlice = createSlice({
     },
 
     questionSelectOption(state, action: PayloadAction<QuestionSelect>) {
-      const { questionId, option } = action.payload;
+      const { questionId,point, option } = action.payload;
       const existingQuestion = state.questionSelect?.find(q => q.questionId === questionId);
       if (existingQuestion) {
+        existingQuestion.point = point
         existingQuestion.option = option;
       } else {
         state.questionSelect = [...(state.questionSelect ?? []), action.payload];

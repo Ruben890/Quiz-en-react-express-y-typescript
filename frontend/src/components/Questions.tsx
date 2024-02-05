@@ -13,6 +13,7 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
   const optionSelect = useAppSelector((state) => state.QuizManage.questionSelect)
   const { questions, loading } = useFetchQuestions(Number(quizId));
   const [Message, setMessage] = useState<string>()
+  
   const pageSize = 1;
   const pagination = usePagination({
     itemsPerPages: pageSize,
@@ -60,6 +61,11 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
   
   if (loading) {
     return null;
+  }
+
+  if(optionSelect?.length){
+    const point = optionSelect.some(q => q.option.isCorrect)
+    console.log(point)
   }
 
  
