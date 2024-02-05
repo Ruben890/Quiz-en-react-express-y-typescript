@@ -5,6 +5,7 @@ import { NestedQuiz, Question, Option, } from "../interface/interfaces";
 
 interface QuestionSelect {
   questionId: number | undefined,
+  point:number | undefined
   option: Option
 }
 

@@ -33,6 +33,7 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
       setMessage("Asegúrate de completar todas las preguntas antes de finalizar.");
     }
   };
+
   
 
   useEffect(() => {
@@ -56,12 +57,13 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
     };
   }, []);
 
-
+  
   if (loading) {
     return null;
   }
-  console.log(pagination.currentPage + 1)
-  console.log(optionSelect?.length)
+
+ 
+
   return (
     <>
       <div id="questions-container" style={{ userSelect: 'none', MozUserSelect: 'none', WebkitUserSelect: 'none', msUserSelect: 'none' }}>
@@ -79,7 +81,7 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
                     <p className="text-wrap text-lg"><span className="font-bold text-lg">Puntos: </span>{questionItems.points}</p>
                   </div>
                 </div>
-                <Options idQuestions={questionItems.id} />
+                <Options idQuestions={questionItems.id} point={questionItems.points} />
               </div>
             ))}
         </div>
@@ -103,7 +105,8 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
               <p className="text-center text-lg">
                 ¿Estás seguro de que deseas finalizar la prueba?
               </p>
-              <button className="btn btn-active btn-primary absolute bottom-6">
+              <button 
+              className="btn btn-active btn-primary absolute bottom-6">
                 Finalizar prueba
               </button>
             </div>
@@ -111,7 +114,7 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
         </Modal>
 
 
-        <div className="lg:absolute lg:bottom-5 w-full left-0 p-3 mt-3">
+        <div className="lg:absolute lg:bottom-0 w-full left-0 p-3 mt-3">
           <Pagination pagination={pagination} />
         </div>
       </div>

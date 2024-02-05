@@ -5,21 +5,28 @@ import { questionSelectOption } from "../redux/quiz.redux";
 import { useAppSelector } from "../app/hooks";
 interface PropsOptions {
     idQuestions: number | undefined;
+    point: number | undefined
 }
 
-export const Options: React.FC<PropsOptions> = ({ idQuestions }) => {
+export const Options: React.FC<PropsOptions> = ({ idQuestions ,point }) => {
     const dispatch = useDispatch();
     const optionSelect = useAppSelector((state) => state.QuizManage.questionSelect)
+
     const { options, loading } = useFetchOption(idQuestions);
 
     if (loading) {
         return 
     }
 
+
    
 
     const handleOptionSelect = (id: number | undefined, isCorrect:boolean, option:string) => {
-        dispatch(questionSelectOption({ questionId: idQuestions, option:{id, isCorrect, option}}));
+        if(!isCorrect){
+            point = 0
+        }
+
+        dispatch(questionSelectOption({ questionId: idQuestions, point, option:{id, isCorrect, option}}));
     };
 
     

@@ -1,4 +1,5 @@
-import { PrismaClient, Question } from "@prisma/client";
+import { PrismaClient, Question,Option, Point, User } from "@prisma/client";
+import { use } from "passport";
 
 class QuestionService {
     private _prisma: PrismaClient;
@@ -40,6 +41,24 @@ class QuestionService {
             await this._prisma.$disconnect();
         }
     }
+
+    public async asingnalPoint(userId:number,  point:number){
+        const user = await this._prisma.user.findUnique({
+            where: {id:userId}
+        })
+
+        if(!user){
+             throw new Error("user not fount")
+        }
+        
+         await this._prisma.point.create({
+            data:{
+                userId:Number(user),
+                point:point
+            }
+        })     
+    }
+
 }
 
 export default QuestionService;
