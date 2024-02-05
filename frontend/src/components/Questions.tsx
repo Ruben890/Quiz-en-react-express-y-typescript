@@ -65,7 +65,7 @@ export const Questions: React.FC<PropsQuestions> = ({ quizId }) => {
     try {
         if (!optionSelect || optionSelect.length === 0) {
             console.error("No hay puntos para asignar");
-            return; // Salir de la función si no hay puntos para asignar
+            return; 
         }
 
         const points: number[] = optionSelect.map(q => q.point as number);
